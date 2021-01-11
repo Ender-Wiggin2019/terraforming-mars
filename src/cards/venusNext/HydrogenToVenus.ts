@@ -32,6 +32,7 @@ export class HydrogenToVenus implements IProjectCard {
       CardName.JET_STREAM_MICROSCRAPPERS,
       CardName.LOCAL_SHADING,
       CardName.STRATOPOLIS,
+      CardName._CELESTIC_
     ]);
 
     public canPlay(player: Player, game: Game): boolean {
