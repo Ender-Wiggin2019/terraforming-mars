@@ -1395,7 +1395,7 @@ export class Game implements ISerializable<SerializedGame> {
 
 
     // Part 3. Setup for bonuses
-    const arcadianCommunityBonus = space.player === player && player.isCorporation(CardName.ARCADIAN_COMMUNITIES);
+    const arcadianCommunityBonus = space.player === player && (player.isCorporation(CardName.ARCADIAN_COMMUNITIES) || player.isCorporation(CardName._ARCADIAN_COMMUNITIES_));
     let startingResources: Multiset<Resources | ResourceType> | undefined = undefined;
     AresHandler.ifAres(this, () => {
       startingResources = AresHandler.beforeTilePlacement(player);

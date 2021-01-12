@@ -58,7 +58,7 @@ export const mainAppSettings = {
       'turmoil_parties': false,
     } as {[x: string]: boolean},
     game: undefined as GameHomeModel | undefined,
-    isvip: false, // 页面加载时刷新isvip, 之后都可以根据这个值判断是否vip
+    isvip: true, // 页面加载时刷新isvip, 之后都可以根据这个值判断是否vip
     oscreen: 'empty', // 跳转赞助页面前的页面
   } as MainAppData,
   'components': {

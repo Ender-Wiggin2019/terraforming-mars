@@ -21,6 +21,7 @@ import {_Celestic_} from './corporation/_Celestic_';
 import {_Arklight_} from './corporation/_Arklight_';
 import {_StormCraftIncorporated_} from './corporation/_StormCraftIncorporated_';
 import { _Polyphemos_ } from "./corporation/_Polyhemos_";
+import { _ArcadianCommunities_ } from './corporation/_ArcadianCommunities_';
 
 export const BREAKTHROUGH_CARD_MANIFEST = new CardManifest({
   module: GameModule.Breakthrough,
@@ -45,7 +46,8 @@ export const BREAKTHROUGH_CARD_MANIFEST = new CardManifest({
     {cardName: CardName._CELESTIC_, Factory: _Celestic_, compatibility: GameModule.Venus, cardName_ori: CardName.CELESTIC},
     {cardName: CardName._ARKLIGHT_, Factory: _Arklight_, cardName_ori: CardName.ARKLIGHT}, // compatibility: GameModule.Colonies},
     {cardName: CardName._STORMCRAFT_INCORPORATED_, Factory: _StormCraftIncorporated_, cardName_ori: CardName.STORMCRAFT_INCORPORATED, compatibility: GameModule.Venus},
-    { cardName: CardName._POLYPHEMOS_, Factory: _Polyphemos_, cardName_ori: CardName.POLYPHEMOS },
+    {cardName: CardName._POLYPHEMOS_, Factory: _Polyphemos_, cardName_ori: CardName.POLYPHEMOS },
+    {cardName: CardName._ARCADIAN_COMMUNITIES_, Factory: _ArcadianCommunities_, cardName_ori: CardName.ARCADIAN_COMMUNITIES },
   ],
   projectCardsToRemove: [
     CardName.PHOBOLOG,
@@ -68,5 +70,6 @@ export const BREAKTHROUGH_CARD_MANIFEST = new CardManifest({
     CardName.ARKLIGHT,
     CardName.STORMCRAFT_INCORPORATED,
     CardName.POLYPHEMOS,
+    CardName.ARCADIAN_COMMUNITIES,
   ],
 });

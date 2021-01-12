@@ -56,7 +56,7 @@ export class _ArcadianCommunities_ implements IActionCard, CorporationCard {
         let bonusResource: number = 0;
         if (space.player !== undefined && space.player.isCorporation(CardName._ARCADIAN_COMMUNITIES_)) {
             bonusResource = game.board.getAdjacentSpaces(space)
-            .filter((space) => space.tile !== undefined && space.player !== undefined && space.player.isCorporation(CardName._ARCADIAN_COMMUNITIES_))
+            .filter((space) => space.tile !== undefined && space.player !== undefined && space.player === player)
             .length;
         }
         player.megaCredits += bonusResource;
@@ -73,11 +73,8 @@ export class _ArcadianCommunities_ implements IActionCard, CorporationCard {
         b.corpBox('action', (ce) => {
           ce.effectBox((eb) => {
             ce.vSpace(CardRenderItemSize.LARGE);
-            eb.description('(Action: place a community on a non-reserved area adjacent to one of your tiles or marked areas.)');
-          });
-          ce.effectBox((eb) => {
             eb.emptyTile('normal', CardRenderItemSize.SMALL).emptyTile('normal', CardRenderItemSize.SMALL).startEffect.megacredits(1);
-            eb.description('(Effect: marked areas are reserved for you. when you place a tile there, gain 3 MC. When you place a tile, gain 1 MC for each tiles you own adjacent to it.)');
+            eb.description('Action: place a community on a non-reserved area adjacent to one of your tiles or marked areas.Effect: marked areas are reserved for you. when you place a tile there, gain 3 MC. When you place a tile, gain 1 MC for each tiles you own adjacent to it.');
           });
         });   
       }),

@@ -77,7 +77,7 @@ export const CardCorporationLogo = Vue.component('CardCorporationLogo', {
         result += '<span class="card-manutech-logo"><span style="color:white;background:#e63900;text-shadow:none;padding-left:2px;">MA</span>NUTECH</span>';
       } else if (title === CardName.AGRICOLA_INC) {
         result += '<span class="card-agricola-logo">Agricola Inc</span>';
-      } else if (title === CardName.ARCADIAN_COMMUNITIES) {
+      } else if (title === CardName.ARCADIAN_COMMUNITIES || title === CardName._ARCADIAN_COMMUNITIES_) {
         result += '<span class="card-arcadian-logo"><span>Arcadian</span></br><span>Communities</span></span>';
       } else if (title === CardName.INCITE) {
         result += '<span class="card-incite-logo">Incite</span>';
