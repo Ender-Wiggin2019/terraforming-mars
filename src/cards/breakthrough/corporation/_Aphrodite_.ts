@@ -5,6 +5,8 @@ import {Game} from '../../../Game';
 import {Tags} from '../../Tags';
 import {CardName} from '../../../CardName';
 import {CardType} from '../../CardType';
+import {CardMetadata} from '../../CardMetadata';
+import {CardRenderer} from '../../render/CardRenderer';
 
 export class _Aphrodite_ implements CorporationCard {
     public name: CardName = CardName._APHRODITE_;
@@ -20,18 +22,18 @@ export class _Aphrodite_ implements CorporationCard {
       return undefined;
     }
 
-  // public metadata: CardMetadata = {
-  //   cardNumber: 'R01',
-  //   description: 'You start with 40 MC. As your first action, raise Venus Scale 2 steps.',
-  //   renderData: CardRenderer.builder((b) => {
-  //     b.br;
-  //     b.megacredits(40).nbsp.venus(1).nbsp.venus(1);
-  //     b.corpBox('effect', (ce) => {
-  //       ce.effectBox((eb) => {
-  //         eb.venus(1).any.startEffect.plants(2);
-  //         eb.description('Effect: Whenever Venus is terraformed 1 step, you gain 2 plant.');
-  //       });
-  //     });
-  //   }),
-  // }
+  public metadata: CardMetadata = {
+    cardNumber: 'R01',
+    description: 'You start with 40 MC. As your first action, raise Venus Scale 2 steps.',
+    renderData: CardRenderer.builder((b) => {
+      b.br;
+      b.megacredits(40).nbsp.venus(1).venus(1);
+      b.corpBox('effect', (ce) => {
+        ce.effectBox((eb) => {
+          eb.venus(1).any.startEffect.plants(2);
+          eb.description('Effect: Whenever Venus is terraformed 1 step, you gain 2 plant.');
+        });
+      });
+    }),
+  }
 }
