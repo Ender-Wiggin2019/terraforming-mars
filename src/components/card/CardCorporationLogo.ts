@@ -12,7 +12,7 @@ export const CardCorporationLogo = Vue.component('CardCorporationLogo', {
       const title: CardName = this.title;
       let result: string = '';
       // TODO(chosta): refactor to include only the exceptions and DRY the code
-      if (title === CardName.APHRODITE) {
+      if (title === CardName.APHRODITE || title === CardName._APHRODITE_) {
         result += '<div class="card-aphrodite-logo">APHRODITE</div>';
       } else if (title === CardName.ARKLIGHT) {
         result += '<div class="card-arklight-logo">ARKLIGHT</div>';
@@ -85,6 +85,8 @@ export const CardCorporationLogo = Vue.component('CardCorporationLogo', {
         result += '<div class="card-lakefront-logo">LAKEFRONT <br> &nbsp;&nbsp;RESORTS</div>';
       } else if (title === CardName.MINING_GUILD) {
         result += '<span class="card-mining-guild-logo">MINING<br>GUILD</span>';
+      } else if (title === CardName._MINING_GUILD_) {
+        result += '<span class="card-mining-guild-breakthrough-logo">MINING<br>GUILD</span>';
       } else if (title === CardName.PHILARES) {
         result += '<div class="card-philares-logo">PHIL<span style="color:#ff5858">A</span>RES</div>';
       } else if (title === CardName.RECYCLON) {
