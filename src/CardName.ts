@@ -481,6 +481,9 @@ export enum CardName {
   _STORMCRAFT_INCORPORATED_ = 'StormCraft Incorporated (breakthrough)',
   _POLYPHEMOS_ = "Polyphemos (breakthrough)",
   _ARCADIAN_COMMUNITIES_ = "Arcadian Communities (breakthrough)",
+  _THARSIS_REPUBLIC_ = "Tharsis_republic (breakthrough)",
+  _MORNING_STAR_INC_ = "MorningStar Inc (breakthrough)",
+  _INTERPLANETARY_CINEMATICS_ = "Interplanetary Cinematics (breakthrough)",
 
   // Community corps
   AGRICOLA_INC = 'Agricola Inc',
@@ -526,6 +529,4 @@ export enum CardName {
   OCEAN_SANCTUARY = 'Ocean Sanctuary',
   RESTRICTED_AREA_ARES = 'Restricted Area:ares',
   SOLAR_FARM = 'Solar Farm',
-  _THARSIS_REPUBLIC_ = "_THARSIS_REPUBLIC_",
-  _MORNING_STAR_INC_ = "_MORNING_STAR_INC_"
 }

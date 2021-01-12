@@ -46,7 +46,7 @@ export class _MorningStarInc_ implements CorporationCard {
         b.megacredits(50).nbsp.cards(3).secondaryTag(Tags.VENUS);
         b.corpBox('effect', (ce) => {
           ce.effectBox((eb) => {
-            eb.venus(1).startEffect.text('+/- 2');
+            eb.venus(1).startEffect.text('+/- 3');
             eb.description('Effect: Your Venus requirements are +/- 3 steps, your choice in each case.');
           });
         });

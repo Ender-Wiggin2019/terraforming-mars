@@ -477,6 +477,8 @@ export class Player implements ISerializable<SerializedPlayer> {
     }
 
     noTagsCount += this.playedCards.filter((card) => card.cardType !== CardType.EVENT && card.tags.filter((tag) => tag !== Tags.WILDCARD).length === 0).length;
+    //事件公司hook
+    if (this.isCorporation(CardName._INTERPLANETARY_CINEMATICS_)) noTagsCount += this.playedCards.filter((card) => card.cardType == CardType.EVENT && card.tags.filter((tag) => tag !== Tags.WILDCARD).length === 0).length;
 
     return noTagsCount;
   }
@@ -612,6 +614,24 @@ export class Player implements ISerializable<SerializedPlayer> {
   }
 
   public getAllTags(): Array<ITagCount> {
+    // if (this.isCorporation(CardName._INTERPLANETARY_CINEMATICS_)){
+    //   return [
+    //     {tag: Tags.BUILDING, count: this.getTagCount(Tags.BUILDING, true, false)},
+    //     {tag: Tags.CITY, count: this.getTagCount(Tags.CITY, true, false)},
+    //     {tag: Tags.EARTH, count: this.getTagCount(Tags.EARTH, true, false)},
+    //     {tag: Tags.ENERGY, count: this.getTagCount(Tags.ENERGY, true, false)},
+    //     {tag: Tags.JOVIAN, count: this.getTagCount(Tags.JOVIAN, true, false)},
+    //     {tag: Tags.MICROBE, count: this.getTagCount(Tags.MICROBE, true, false)},
+    //     {tag: Tags.PLANT, count: this.getTagCount(Tags.PLANT, true, false)},
+    //     {tag: Tags.SCIENCE, count: this.getTagCount(Tags.SCIENCE, true, false)},
+    //     {tag: Tags.SPACE, count: this.getTagCount(Tags.SPACE, true, false)},
+    //     {tag: Tags.VENUS, count: this.getTagCount(Tags.VENUS, true, false)},
+    //     {tag: Tags.WILDCARD, count: this.getTagCount(Tags.WILDCARD, true, false)},
+    //     {tag: Tags.ANIMAL, count: this.getTagCount(Tags.ANIMAL, true, false)},
+    //     {tag: Tags.EVENT, count: this.playedCards.filter((card) => card.cardType === CardType.EVENT).length},
+    //   ].filter((tag) => tag.count > 0);
+    // }
+
     return [
       {tag: Tags.BUILDING, count: this.getTagCount(Tags.BUILDING, false, false)},
       {tag: Tags.CITY, count: this.getTagCount(Tags.CITY, false, false)},
@@ -633,7 +653,7 @@ export class Player implements ISerializable<SerializedPlayer> {
     let tagCount = 0;
 
     this.playedCards.forEach((card: IProjectCard) => {
-      if ( ! includeEventsTags && card.cardType === CardType.EVENT) return;
+      if ( ! includeEventsTags && ! this.isCorporation(CardName._INTERPLANETARY_CINEMATICS_) && card.cardType === CardType.EVENT) return;
       tagCount += card.tags.filter((cardTag) => cardTag === tag).length;
     });
 
@@ -669,6 +689,7 @@ export class Player implements ISerializable<SerializedPlayer> {
   public getDistinctTagCount(countWild: boolean, extraTag?: Tags): number {
     const allTags: Tags[] = [];
     let wildcardCount: number = 0;
+    let eventCount: number = 0;
     if (extraTag !== undefined) {
       allTags.push(extraTag);
     }
@@ -682,6 +703,15 @@ export class Player implements ISerializable<SerializedPlayer> {
           allTags.push(tag);
         });
       });
+    if (this.isCorporation(CardName._INTERPLANETARY_CINEMATICS_) && this.playedCards.filter((card) => card.cardType == CardType.EVENT).length > 0){
+      eventCount++;
+      this.playedCards.filter((card) => card.cardType == CardType.EVENT)
+      .forEach((card) => {
+        card.tags.forEach((tag) => {
+          allTags.push(tag);
+        });
+      });
+    }
     for (const tags of allTags) {
       if (tags === Tags.WILDCARD) {
         wildcardCount++;
@@ -690,9 +720,9 @@ export class Player implements ISerializable<SerializedPlayer> {
       }
     }
     if (countWild) {
-      return uniqueTags.size + wildcardCount;
+      return uniqueTags.size + wildcardCount + eventCount;
     } else {
-      return uniqueTags.size;
+      return uniqueTags.size + eventCount;
     }
   }
 

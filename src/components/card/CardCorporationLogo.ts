@@ -28,7 +28,7 @@ export const CardCorporationLogo = Vue.component('CardCorporationLogo', {
         result += '<span style="background:linear-gradient(to right,rgb(23,185,236),rgb(251,192,137))">ES</span>';
         result += '<span style="background:rgb(251,192,137);padding-right:5px;">TIC</span>';
         result += '</div>';
-      } else if (title === CardName.MORNING_STAR_INC) {
+      } else if (title === CardName.MORNING_STAR_INC || title === CardName._MORNING_STAR_INC_) {
         result += '<div class="card-morning-star-logo">MORNING STAR INC.</div>';
       } else if (title === CardName.PRISTAR) {
         result += '<div class="card-pristar-logo">PRISTAR</div>';
@@ -44,7 +44,7 @@ export const CardCorporationLogo = Vue.component('CardCorporationLogo', {
         result += '<div class="card-ecoline-logo">ecoline</div>';
       } else if (title === CardName.HELION) {
         result += '<div class="card-helion-logo">helion</div>';
-      } else if (title === CardName.INTERPLANETARY_CINEMATICS) {
+      } else if (title === CardName.INTERPLANETARY_CINEMATICS || title === CardName._INTERPLANETARY_CINEMATICS_) {
         result += '<div style="color: #020202;font-size:17px;margin-top:10px;margin-left:-87px;">INTERPLANETARY</div>';
         result += '<div style="height:5px;margin-top:-2px;width:143px;background:linear-gradient(to right,yellow,black,yellow,black,yellow);border:5px solid #cc3333;box-shadow:3px 3px 6px grey;"></div>';
         result += '<div style="color: #020202;font-size:24px;margin-left:-89px;margin-top:-5px; display:inline-block; -webkit-transform:scale(0.5,1); -moz-transform:scale(0.5,1); -ms-transform:scale(0.5,1); -o-transform:scale(0.5,1); transform:scale(1,0.5); margin-bottom:15px;">CINEMATICS</div>';
@@ -107,7 +107,7 @@ export const CardCorporationLogo = Vue.component('CardCorporationLogo', {
         result += '</div>';
       } else if (title === CardName.TERACTOR) {
         result += '<span class="card-teractor-logo">TERACTOR</span>';
-      } else if (title === CardName.THARSIS_REPUBLIC) {
+      } else if (title === CardName.THARSIS_REPUBLIC || title === CardName._THARSIS_REPUBLIC_) {
         result += '<div class="card-tharsis-logo">';
         result += '<div style="color: #020202;font-size:24px;text-shadow:6px 6px 6px grey;">';
         result += '<div style="text-shadow:none;box-shadow:3px 3px 6px grey;margin-right:2px;border: 1px solid red;display:inline-block;background-color:#ff5f00;">&#x25b2;<span style="color: #020202;font-size:14px;padding:0px;border:none;margin-left:-5px;">&#x25b2;</span>';
