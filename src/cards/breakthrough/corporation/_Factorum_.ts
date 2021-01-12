@@ -8,6 +8,9 @@ import {SelectOption} from '../../../inputs/SelectOption';
 import {OrOptions} from '../../../inputs/OrOptions';
 import {CardName} from '../../../CardName';
 import {CardType} from '../../CardType';
+import {CardMetadata} from '../../CardMetadata';
+import {CardRenderer} from '../../render/CardRenderer';
+import { CardRenderItemSize } from '../../render/CardRenderItemSize';
 
 export class _Factorum_ implements IActionCard, CorporationCard {
     public name: CardName = CardName._FACTORUM_;
@@ -49,6 +52,21 @@ export class _Factorum_ implements IActionCard, CorporationCard {
       if (!player.canAfford(3)) return increaseEnergy;
 
       return new OrOptions(increaseEnergy, drawBuildingCard);
+    }
+    public metadata: CardMetadata = {
+      cardNumber: 'R22',
+      description: 'You start with 45 MC. Increase your steel production 1 step.',
+      renderData: CardRenderer.builder((b) => {
+        b.megacredits(45).nbsp.productionBox((pb) => pb.steel(1));
+        b.corpBox('action', (ce) => {
+          ce.vSpace(CardRenderItemSize.LARGE);
+          ce.effectBox((eb) => {
+            eb.empty().arrow().productionBox((pb) => pb.energy(1));
+            eb.or().megacredits(3).startAction.cards(1).secondaryTag(Tags.BUILDING);
+            eb.description('Action: Increase your energy production 1 step IF YOU HAVE NO ENERGY RESOURCES, or spend 3MC to draw a building card.');
+          });
+        });
+      }),
     }
 }
 

@@ -479,6 +479,7 @@ export enum CardName {
     _CELESTIC_ = 'Celestic (breakthrough)',
     _ARKLIGHT_ = 'Arklight (breakthrough)',
     _STORMCRAFT_INCORPORATED_ = 'StormCraft Incorporated (breakthrough)',
+    _POLYPHEMOS_ = "Polyphemos (breakthrough)",
 
     // Community corps
     AGRICOLA_INC = 'Agricola Inc',

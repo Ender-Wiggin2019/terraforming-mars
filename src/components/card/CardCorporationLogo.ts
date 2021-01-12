@@ -56,7 +56,7 @@ export const CardCorporationLogo = Vue.component('CardCorporationLogo', {
         result += '<span class="card-phobolog-logo">PHOBOLOG</span>';
       } else if (title === CardName.POINT_LUNA) {
         result += '<span class="card-luna-logo">POINT LUNA</span>';
-      } else if (title === CardName.POLYPHEMOS) {
+      } else if (title === CardName.POLYPHEMOS || title === CardName._POLYPHEMOS_) {
         result += '<span class="card-polyphemos-logo">POLYPHEMOS</span>';
       } else if (title === CardName.SEPTEM_TRIBUS) {
         result += '<span class="card-septem-tribus-logo">Septem Tribus</span>';
@@ -71,7 +71,7 @@ export const CardCorporationLogo = Vue.component('CardCorporationLogo', {
         result += '<span class="card-aridor-logo">ARIDOR</span>';
       } else if (title === CardName.ASTRODRILL) {
         result += '<span class="card-astrodril-logo">Astrodrill</span>';
-      } else if (title === CardName.FACTORUM) {
+      } else if (title === CardName.FACTORUM || title == CardName._FACTORUM_) {
         result += '<span class="card-factorum-logo">FACTORUM</span>';
       } else if (title === CardName.MANUTECH) {
         result += '<span class="card-manutech-logo"><span style="color:white;background:#e63900;text-shadow:none;padding-left:2px;">MA</span>NUTECH</span>';
