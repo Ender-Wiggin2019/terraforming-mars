@@ -3,6 +3,8 @@ import {Player} from '../../../Player';
 import {Tags} from '../../Tags';
 import {CardName} from '../../../CardName';
 import {CardType} from '../../CardType';
+import {CardMetadata} from '../../CardMetadata';
+import {CardRenderer} from '../../render/CardRenderer';
 
 export class _TerralabsResearch_ implements CorporationCard {
     public name: CardName = CardName._TERRALABS_RESEARCH_;
@@ -14,5 +16,19 @@ export class _TerralabsResearch_ implements CorporationCard {
       player.decreaseTerraformRating();
       player.cardCost = 1;
       return undefined;
+    }
+    public metadata: CardMetadata = {
+      cardNumber: 'R14',
+      description: 'You start with 20 MC. Lower your TR 1 step.',
+      renderData: CardRenderer.builder((b) => {
+        b.br;
+        b.megacredits(20).nbsp.minus().tr(1);
+        b.corpBox('effect', (ce) => {
+          ce.effectBox((eb) => {
+            eb.cards(1).startEffect.megacredits(1).asterix();
+            eb.description('Effect: Buying cards to hand costs 1MC. You can draw 5 card in research phase (keep 2 in first turn if drafting)');
+          });
+        });
+      }),
     }
 }

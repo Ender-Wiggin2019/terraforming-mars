@@ -329,26 +329,26 @@ export const HTML_DATA: Map<string, string> =
         <div class="description" style="margin-top:-2px;margin-left:-7px;margin-right:-7px;text-align:center;">(You start with 44 MC. As your first action, reveal cards until you have revealed 2 microbe tag. Take these cards into hand and discard the rest.)</div>
       </div>
 `],
-    [CardName._TERRALABS_RESEARCH_, `
-  <div class="turmoil-icon corporation-icon"></div>
-  <div class="contentCorporation ">
-      <div class="corporationEffectBox ">
-          <div class="corporationEffectBoxLabel">EFFECT</div>
-            <div class="resource card"></div> : <div class="resource money">1</div>
-          <div class="description " style="text-align:center;margin-top:0px; ">
-              (Effect: Buying cards to hand costs 1MC.)
-          </div>
-      </div>
-      <div style="font-size:16px;margin-top:33px;margin-left:75px;margin-bottom:5px; font-family:Prototype;color:#222;transform:scale(2,1)">
-        TERRALABS
-        </div>
-        <div style="font-size:8px;letter-spacing:2px;font-family:Prototype;margin-left:100px;margin-top:-5px;transform:scale(2,1)">RESEARCH</div>
-      <div class="resource money " style="margin-left:25px;margin-right:20px;">20</div> - <div class="tile rating"></div>
-      <div class="description " style="text-align:center;">
-          (You start with 20 MC. Lower your TR 1 step.)
-      </div>
-  </div>
-`],
+//     [CardName._TERRALABS_RESEARCH_, `
+//   <div class="turmoil-icon corporation-icon"></div>
+//   <div class="contentCorporation ">
+//       <div class="corporationEffectBox ">
+//           <div class="corporationEffectBoxLabel">EFFECT</div>
+//             <div class="resource card"></div> : <div class="resource money">1</div>
+//           <div class="description " style="text-align:center;margin-top:0px; ">
+//               (Effect: Buying cards to hand costs 1MC.)
+//           </div>
+//       </div>
+//       <div style="font-size:16px;margin-top:33px;margin-left:75px;margin-bottom:5px; font-family:Prototype;color:#222;transform:scale(2,1)">
+//         TERRALABS
+//         </div>
+//         <div style="font-size:8px;letter-spacing:2px;font-family:Prototype;margin-left:100px;margin-top:-5px;transform:scale(2,1)">RESEARCH</div>
+//       <div class="resource money " style="margin-left:25px;margin-right:20px;">20</div> - <div class="tile rating"></div>
+//       <div class="description " style="text-align:center;">
+//           (You start with 20 MC. Lower your TR 1 step.)
+//       </div>
+//   </div>
+// `],
 
     [CardName._UNITED_NATIONS_MARS_INITIATIVE_, `
     <div class="contentCorporation">

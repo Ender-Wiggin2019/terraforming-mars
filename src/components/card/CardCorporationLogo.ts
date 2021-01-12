@@ -60,7 +60,7 @@ export const CardCorporationLogo = Vue.component('CardCorporationLogo', {
         result += '<span class="card-polyphemos-logo">POLYPHEMOS</span>';
       } else if (title === CardName.SEPTEM_TRIBUS) {
         result += '<span class="card-septem-tribus-logo">Septem Tribus</span>';
-      } else if (title === CardName.TERRALABS_RESEARCH) {
+      } else if (title === CardName.TERRALABS_RESEARCH || title === CardName._TERRALABS_RESEARCH_) {
         result += '<div style="font-size: 13px;left:32px;top:10px;font-family:Prototype;color:#222;transform:scale(2,1);position:absolute;">TERRALABS</div>';
         result += '<div style="position:absolute;top:28px;left:46px;font-size:8px;letter-spacing:2px;font-family:Prototype;transform:scale(2,1)">RESEARCH</div>';
       } else if (title === CardName.THORGATE) {

@@ -994,7 +994,7 @@ export class Player implements ISerializable<SerializedPlayer> {
   public runDraftPhase(initialDraft: boolean, game: Game, playerName: string, passedCards?: Array<IProjectCard>): void {
     let cards: Array<IProjectCard> = [];
     if (passedCards === undefined) {
-      if (!initialDraft) {
+      if (!initialDraft && !this.isCorporation(CardName._TERRALABS_RESEARCH_)) {
         this.dealCards(game, 4, cards);
       } else {
         this.dealCards(game, 5, cards);
@@ -1002,25 +1002,47 @@ export class Player implements ISerializable<SerializedPlayer> {
     } else {
       cards = passedCards;
     }
-
-    this.setWaitingFor(
-      new SelectCard({
-        message: 'Select a card to keep and pass the rest to ${0}',
-        data: [{
-          type: LogMessageDataType.RAW_STRING,
-          value: playerName,
-        }],
-      },
-      'Keep',
-      cards,
-      (foundCards: Array<IProjectCard>) => {
-        this.draftedCards.push(foundCards[0]);
-        cards = cards.filter((card) => card !== foundCards[0]);
-        game.playerIsFinishedWithDraftingPhase(initialDraft, this, cards);
-        return undefined;
-      }, 1, 1, false,
-      ), () => { },
-    );
+    // Terralabs hook
+    if (this.isCorporation(CardName._TERRALABS_RESEARCH_) && passedCards === undefined){
+      this.setWaitingFor(
+        new SelectCard({
+          message: 'Select 2 cards to keep and pass the rest to ${0}',
+          data: [{
+            type: LogMessageDataType.RAW_STRING,
+            value: playerName,
+          }],
+        },
+        'Keep',
+        cards,
+        (foundCards: Array<IProjectCard>) => {
+          this.draftedCards.push(foundCards[0],foundCards[1]);
+          cards = cards.filter((card) => card !== foundCards[0] && card !== foundCards[1]);
+          game.playerIsFinishedWithDraftingPhase(initialDraft, this, cards);
+          return undefined;
+        }, 2, 2, false,
+        ), () => { },
+      );
+    }
+    else{
+      this.setWaitingFor(
+        new SelectCard({
+          message: 'Select a card to keep and pass the rest to ${0}',
+          data: [{
+            type: LogMessageDataType.RAW_STRING,
+            value: playerName,
+          }],
+        },
+        'Keep',
+        cards,
+        (foundCards: Array<IProjectCard>) => {
+          this.draftedCards.push(foundCards[0]);
+          cards = cards.filter((card) => card !== foundCards[0]);
+          game.playerIsFinishedWithDraftingPhase(initialDraft, this, cards);
+          return undefined;
+        }, 1, 1, false,
+        ), () => { },
+      );
+    }
   }
 
   /**
@@ -1034,7 +1056,8 @@ export class Player implements ISerializable<SerializedPlayer> {
   public runResearchPhase(game: Game, draftVariant: boolean): void {
     let dealtCards: Array<IProjectCard> = [];
     if (!draftVariant) {
-      this.dealCards(game, 4, dealtCards);
+      if (this.isCorporation(CardName._TERRALABS_RESEARCH_)) this.dealCards(game, 5, dealtCards);
+      else this.dealCards(game, 4, dealtCards);
     } else {
       dealtCards = this.draftedCards;
       this.draftedCards = [];
@@ -1066,6 +1089,7 @@ export class Player implements ISerializable<SerializedPlayer> {
     };
 
     let maxPurchaseQty = 4;
+    if (this.isCorporation(CardName._TERRALABS_RESEARCH_)) maxPurchaseQty++;
     maxPurchaseQty = Math.min(maxPurchaseQty, Math.floor(this.spendableMegacredits() / this.cardCost));
 
     this.setWaitingFor(
