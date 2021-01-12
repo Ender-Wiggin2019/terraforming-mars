@@ -22,6 +22,8 @@ import {_Arklight_} from './corporation/_Arklight_';
 import {_StormCraftIncorporated_} from './corporation/_StormCraftIncorporated_';
 import { _Polyphemos_ } from "./corporation/_Polyhemos_";
 import { _ArcadianCommunities_ } from './corporation/_ArcadianCommunities_';
+import { _TharsisRepublic_ } from './corporation/_TharsisRepublic_';
+import { _MorningStarInc_ } from './corporation/_MorningStarInc_';
 
 export const BREAKTHROUGH_CARD_MANIFEST = new CardManifest({
   module: GameModule.Breakthrough,
@@ -48,6 +50,8 @@ export const BREAKTHROUGH_CARD_MANIFEST = new CardManifest({
     {cardName: CardName._STORMCRAFT_INCORPORATED_, Factory: _StormCraftIncorporated_, cardName_ori: CardName.STORMCRAFT_INCORPORATED, compatibility: GameModule.Venus},
     {cardName: CardName._POLYPHEMOS_, Factory: _Polyphemos_, cardName_ori: CardName.POLYPHEMOS },
     {cardName: CardName._ARCADIAN_COMMUNITIES_, Factory: _ArcadianCommunities_, cardName_ori: CardName.ARCADIAN_COMMUNITIES },
+    {cardName: CardName._THARSIS_REPUBLIC_, Factory: _TharsisRepublic_, cardName_ori: CardName.THARSIS_REPUBLIC },
+    {cardName: CardName._MORNING_STAR_INC_, Factory: _MorningStarInc_, cardName_ori: CardName.MORNING_STAR_INC }
   ],
   projectCardsToRemove: [
     CardName.PHOBOLOG,
@@ -71,5 +75,7 @@ export const BREAKTHROUGH_CARD_MANIFEST = new CardManifest({
     CardName.STORMCRAFT_INCORPORATED,
     CardName.POLYPHEMOS,
     CardName.ARCADIAN_COMMUNITIES,
+    CardName.THARSIS_REPUBLIC,
+    CardName.MORNING_STAR_INC
   ],
 });

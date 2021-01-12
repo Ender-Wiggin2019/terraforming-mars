@@ -526,4 +526,6 @@ export enum CardName {
   OCEAN_SANCTUARY = 'Ocean Sanctuary',
   RESTRICTED_AREA_ARES = 'Restricted Area:ares',
   SOLAR_FARM = 'Solar Farm',
+  _THARSIS_REPUBLIC_ = "_THARSIS_REPUBLIC_",
+  _MORNING_STAR_INC_ = "_MORNING_STAR_INC_"
 }
