@@ -175,32 +175,32 @@ export const HTML_DATA: Map<string, string> =
       </div>
     </div>
 `],
-    [CardName._APHRODITE_, `
-    <div class="venus-icon corporation-icon"></div>
-    <div class="contentCorporation">
-      <div class="corporationEffectBox">
-        <div class="corporationEffectBoxLabel">EFFECT</div>
-        <div class="tile venus-tile">V</div> : 2  <div class="resource plant"></div>
-        <div class="description" style="text-align:center;margin-top:0px;">
-          (Effect: Whenever Venus is terraformed 1 step, you gain 2 plant.)
-        </div>
-      </div>
-      <div style="font-size:23px;
-                    color: orange;
-                    font-weight:bold;
-                    margin-top:10px;
-                    text-shadow:  6px 6px 6px  grey;
-                    text-shadow: -1px 0 #333333, 0 1px #333333, 1px 0 #333333,0px -1px #333333, 6px 3px 5px  grey;">
-                APHRODITE</div>
-                <br>          
-            <div class="resource money " style="margin-left:20px; ">40</div>
-            <div class="tile venus-tile">V</div>
-            <div class="tile venus-tile">V</div>
-            <div class="description " style="text-align:center; ">
-                (You start with 40 MC. As your first action, raise Venus Scale 2 steps.)
-            </div>
-        </div>
-`],
+//     [CardName._APHRODITE_, `
+//     <div class="venus-icon corporation-icon"></div>
+//     <div class="contentCorporation">
+//       <div class="corporationEffectBox">
+//         <div class="corporationEffectBoxLabel">EFFECT</div>
+//         <div class="tile venus-tile">V</div> : 2  <div class="resource plant"></div>
+//         <div class="description" style="text-align:center;margin-top:0px;">
+//           (Effect: Whenever Venus is terraformed 1 step, you gain 2 plant.)
+//         </div>
+//       </div>
+//       <div style="font-size:23px;
+//                     color: orange;
+//                     font-weight:bold;
+//                     margin-top:10px;
+//                     text-shadow:  6px 6px 6px  grey;
+//                     text-shadow: -1px 0 #333333, 0 1px #333333, 1px 0 #333333,0px -1px #333333, 6px 3px 5px  grey;">
+//                 APHRODITE</div>
+//                 <br>          
+//             <div class="resource money " style="margin-left:20px; ">40</div>
+//             <div class="tile venus-tile">V</div>
+//             <div class="tile venus-tile">V</div>
+//             <div class="description " style="text-align:center; ">
+//                 (You start with 40 MC. As your first action, raise Venus Scale 2 steps.)
+//             </div>
+//         </div>
+// `],
     [CardName._FACTORUM_, `
     <div class="promo-icon corporation-icon"></div>
     <div class="contentCorporation">
@@ -228,45 +228,45 @@ export const HTML_DATA: Map<string, string> =
       </div>
     </div>
     `],
-    [CardName._MINING_GUILD_, `
-  <div class="contentCorporation">
-    <div class="corporationEffectBox">
-      <div class="corporationEffectBoxLabel"style="margin-bottom:3px;">EFFECT</div>
-      <div class="resource steel" style="margin-bottom: 0px;"></div> /
-      <div class="resource titanium" style="margin-bottom: 0px;"></div> :
-      <div class="production-box" style="margin-bottom:0px;padding: 1px;width: 34px;" >
-        <div class="production steel"style="margin-bottom:0px;"></div></div>
-        <br>4<div class="resource steel" style = "margin-bottom:0px;margin-right: -3px;"></div>
-        <div class="red-arrow"></div>
-        <div class="triangle triangle-white" margin-left: -5px;margin-right: -5px;></div>/<div class="tile city-tile " style="margin-bottom:0px;margin-left:5px;"></div>
-        (<span class="resource steel"></span>)
-      <div class="description" style="text-align:center;line-height: 10px;font-size: 10px;">
-        (Effect: Each time you get steel/titanium as placement bonus, increase 1 steel prod.You can use 4 steel to trade.You can use steel to pay for city standard project.)
-      </div>
-    </div>
-    <span class=" mining guild" style="font-size:24px;
-            margin-left:20px;
-                    color:#c9380e;
-                    text-shadow: -1px 0 #333333, 0 1px #333333, 1px 0 #333333, 0 -1px #333333, 2px 2px 2px  black;
-                    display:inline-block;
-                    -webkit-transform:scale(1.5,1); /* Safari and Chrome */
-                    -moz-transform:scale(1.5,1); /* Firefox */
-                    -ms-transform:scale(1.5,1); /* IE 9 */
-                    -o-transform:scale(1.5,1); /* Opera */
-                    transform:scale(1.5,1); /* W3C */
-                    ">
-                MINING<br>GUILD
-            </span><br>
-    <div class="resource money" style="margin-left:35px;">30</div>&nbsp;&nbsp;
-    5<div class="resource steel"></div>
-    <div class="production-box" style="margin-top:5px;margin-left:20px;">
-      <div class="production steel"></div>
-    </div>
-    <div class="description" style="margin-top:-5px;text-align:center;margin-top: -5px;">
-      (You start with 30 MC, 5 steel, and 1 steel production)
-    </div>
-  </div>
-`],
+//     [CardName._MINING_GUILD_, `
+//   <div class="contentCorporation">
+//     <div class="corporationEffectBox">
+//       <div class="corporationEffectBoxLabel"style="margin-bottom:3px;">EFFECT</div>
+//       <div class="resource steel" style="margin-bottom: 0px;"></div> /
+//       <div class="resource titanium" style="margin-bottom: 0px;"></div> :
+//       <div class="production-box" style="margin-bottom:0px;padding: 1px;width: 34px;" >
+//         <div class="production steel"style="margin-bottom:0px;"></div></div>
+//         <br>4<div class="resource steel" style = "margin-bottom:0px;margin-right: -3px;"></div>
+//         <div class="red-arrow"></div>
+//         <div class="triangle triangle-white" margin-left: -5px;margin-right: -5px;></div>/<div class="tile city-tile " style="margin-bottom:0px;margin-left:5px;"></div>
+//         (<span class="resource steel"></span>)
+//       <div class="description" style="text-align:center;line-height: 10px;font-size: 10px;">
+//         (Effect: Each time you get steel/titanium as placement bonus, increase 1 steel prod.You can use 4 steel to trade.You can use steel to pay for city standard project.)
+//       </div>
+//     </div>
+//     <span class=" mining guild" style="font-size:24px;
+//             margin-left:20px;
+//                     color:#c9380e;
+//                     text-shadow: -1px 0 #333333, 0 1px #333333, 1px 0 #333333, 0 -1px #333333, 2px 2px 2px  black;
+//                     display:inline-block;
+//                     -webkit-transform:scale(1.5,1); /* Safari and Chrome */
+//                     -moz-transform:scale(1.5,1); /* Firefox */
+//                     -ms-transform:scale(1.5,1); /* IE 9 */
+//                     -o-transform:scale(1.5,1); /* Opera */
+//                     transform:scale(1.5,1); /* W3C */
+//                     ">
+//                 MINING<br>GUILD
+//             </span><br>
+//     <div class="resource money" style="margin-left:35px;">30</div>&nbsp;&nbsp;
+//     5<div class="resource steel"></div>
+//     <div class="production-box" style="margin-top:5px;margin-left:20px;">
+//       <div class="production steel"></div>
+//     </div>
+//     <div class="description" style="margin-top:-5px;text-align:center;margin-top: -5px;">
+//       (You start with 30 MC, 5 steel, and 1 steel production)
+//     </div>
+//   </div>
+// `],
     [CardName._RECYCLON_, `
       <div class="promo-icon corporation-icon"></div>
       <div class="contentCorporation">
