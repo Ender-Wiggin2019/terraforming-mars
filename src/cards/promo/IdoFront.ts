@@ -7,8 +7,8 @@ import {Resources} from '../../Resources';
 import {CardName} from '../../CardName';
 import {CardType} from '../CardType';
 
-export class IdFront implements CorporationCard {
-    public name: CardName = CardName.ID_FRONT;
+export class IdoFront implements CorporationCard {
+    public name: CardName = CardName.IDO_FRONT;
     public tags: Array<Tags> = [];
     public startingMegaCredits: number = 32;
     public cardType: CardType = CardType.CORPORATION;
@@ -32,8 +32,6 @@ export class IdFront implements CorporationCard {
       }
       return undefined;
     }
-
-
     public play() {
       return undefined;
     }

@@ -456,7 +456,7 @@ export enum CardName {
   LAW_SUIT = 'Law Suit',
   STANFORD_TORUS = 'Stanford Torus',
   SATURN_SURFING = 'Saturn Surfing',
-  ID_FRONT = 'Id Front',
+  IDO_FRONT = 'Ido Front',
 
 
   // /// breakthrough

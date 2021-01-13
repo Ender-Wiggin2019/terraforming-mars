@@ -53,7 +53,7 @@ import {Tags} from './cards/Tags';
 import {TileType} from './TileType';
 import {VictoryPointsBreakdown} from './VictoryPointsBreakdown';
 import {_MiningGuild_} from './cards/breakthrough/corporation/_MiningGuild_';
-import {IdFront} from './cards/promo/IdFront';
+import {IdoFront} from './cards/promo/IdoFront';
 import {IProductionUnits} from './inputs/IProductionUnits';
 import {SelectProductionToLose} from './inputs/SelectProductionToLose';
 import {IAresGlobalParametersResponse, ShiftAresGlobalParameters} from './inputs/ShiftAresGlobalParameters';
@@ -2185,8 +2185,8 @@ export class Player implements ISerializable<SerializedPlayer> {
           console.warn('did not find allTags for ARIDOR');
         }
       }
-      if (d.corporationCard.name === CardName.ID_FRONT) {
-        (player.corporationCard as IdFront).allTags = new Set((d.corporationCard as any).allTags);
+      if (d.corporationCard.name === CardName.IDO_FRONT) {
+        (player.corporationCard as IdoFront).allTags = new Set((d.corporationCard as any).allTags);
       }
       if (player.corporationCard instanceof PharmacyUnion) {
         if (d.corporationCard.isDisabled === true) {

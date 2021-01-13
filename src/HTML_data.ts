@@ -358,7 +358,7 @@ export const HTML_DATA: Map<string, string> =
         <div class="tile rating" style="margin-bottom: 0px;margin-top: 0px;"></div>*<br>
         <div class="tile rating"style="margin-bottom: 0px;margin-top: 0px;"></div>: <div class="resource money">2</div>
         <div class="description" style="text-align:center;margin-top:0px;">
-          (Action:If your TR was raised this generation, you may pay 5 MC to raise 1 step. When you raise TR, gain 2 MC.)
+          (Action:If your TR was raised this generation, you may pay 5 MC to raise 1 step. When you raise TR in generation, gain 2 MC.)
         </div>
       </div>
       <div class="background-color-active" style="font-size:16px;
@@ -447,7 +447,7 @@ export const HTML_DATA: Map<string, string> =
           </div>
       </div>
 `],
-    [CardName.ID_FRONT, `
+    [CardName.IDO_FRONT, `
       <div class="contentCorporation">
         <div class="corporationEffectBox">
           <div class="corporationEffectBoxLabel">EFFECT</div>

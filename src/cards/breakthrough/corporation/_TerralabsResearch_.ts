@@ -26,7 +26,7 @@ export class _TerralabsResearch_ implements CorporationCard {
         b.corpBox('effect', (ce) => {
           ce.effectBox((eb) => {
             eb.cards(1).startEffect.megacredits(1).asterix();
-            eb.description('Effect: Buying cards to hand costs 1MC. You can draw 5 card in research phase (keep 2 in first turn if drafting)');
+            eb.description('Effect: Buying cards to hand costs 1MC. You can draw 5 cards in research phase (keep 2 in first turn if drafting)');
           });
         });
       }),
