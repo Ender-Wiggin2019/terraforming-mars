@@ -23,7 +23,9 @@ export class SellPatents extends StandardProjectCard {
         'Sell',
         player.cardsInHand,
         (foundCards: Array<IProjectCard>) => {
-          player.megaCredits += foundCards.length;
+          //卖牌3元hook
+          if(player.isCorporation(CardName._POLYPHEMOS_)) player.megaCredits += 3*foundCards.length;
+          else player.megaCredits += foundCards.length;
           foundCards.forEach((card) => {
             for (let i = 0; i < player.cardsInHand.length; i++) {
               if (player.cardsInHand[i].name === card.name) {
