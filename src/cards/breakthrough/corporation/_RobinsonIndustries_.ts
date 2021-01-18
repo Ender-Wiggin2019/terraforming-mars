@@ -10,6 +10,8 @@ import {CardName} from '../../../CardName';
 import {LogHelper} from '../../../LogHelper';
 import {Game} from '../../../Game';
 import {CardType} from '../../CardType';
+import { CardMetadata } from '../../CardMetadata';
+import { CardRenderer } from '../../render/CardRenderer';
 
 export class _RobinsonIndustries_ implements IActionCard, CorporationCard {
     public name: CardName = CardName._ROBINSON_INDUSTRIES_;
@@ -52,5 +54,19 @@ export class _RobinsonIndustries_ implements IActionCard, CorporationCard {
       player.addProduction(resource);
       player.megaCredits -= 2;
       LogHelper.logGainProduction(game, player, resource);
+    }
+    public metadata: CardMetadata = {
+      cardNumber: 'R27',
+      description: 'You start with 47 MC.',
+      renderData: CardRenderer.builder((b) => {
+        b.br.br.br;
+        b.megacredits(47);
+        b.corpBox('action', (ce) => {
+          ce.effectBox((eb) => {
+            eb.megacredits(2).startAction.productionBox((pb) => pb.wild(1).asterix());
+            eb.description('Action: Spend 2 MC to increase (one of) your LOWEST production 1 step.');
+          });
+        });
+      }),
     }
 }

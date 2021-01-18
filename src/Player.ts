@@ -60,6 +60,7 @@ import {IAresGlobalParametersResponse, ShiftAresGlobalParameters} from './inputs
 import {Timer} from './Timer';
 import {StandardProjectCard} from './cards/standardProjects/StandardProjectCard';
 import {CardLoader} from './CardLoader';
+import { _MorningStarInc_ } from './cards/breakthrough/corporation/_MorningStarInc_';
 
 
 export class Player implements ISerializable<SerializedPlayer> {
@@ -1543,6 +1544,7 @@ export class Player implements ISerializable<SerializedPlayer> {
     return new SelectOption(`Convert ${this.heatForTemperature} heat into temperature`, 'Convert heat', () => {
       game.increaseTemperature(this, 1);
       this.heat -= this.heatForTemperature;
+      // if (this.isCorporation(CardName._HELION_)) this.megaCredits += 2;
       game.log('${0} converted heat into temperature', (b) => b.player(this));
 
       return undefined;
@@ -2193,6 +2195,9 @@ export class Player implements ISerializable<SerializedPlayer> {
           player.corporationCard.tags = [];
           player.corporationCard.isDisabled = true;
         }
+      }
+      if (player.corporationCard instanceof _MorningStarInc_) {
+        if (d.corporationCard.isDisabled === true) player.corporationCard.isDisabled = true;
       }
     } else {
       player.corporationCard = undefined;

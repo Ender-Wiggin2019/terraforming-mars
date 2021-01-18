@@ -456,7 +456,6 @@ export enum CardName {
   LAW_SUIT = 'Law Suit',
   STANFORD_TORUS = 'Stanford Torus',
   SATURN_SURFING = 'Saturn Surfing',
-  IDO_FRONT = 'Ido Front',
 
 
   // /// breakthrough
@@ -529,4 +528,21 @@ export enum CardName {
   OCEAN_SANCTUARY = 'Ocean Sanctuary',
   RESTRICTED_AREA_ARES = 'Restricted Area:ares',
   SOLAR_FARM = 'Solar Farm',
+
+  // 群友扩
+  IDO_FRONT = 'Ido Front',
+  COSMOS_LIBRARY = "Cosmos Library",
+  TRANTOR = "Trantor",
+  EARTH_CIVIL_COURT = "Earth Civil Court",
+  NANO_BOTS = "Nano Bots",
+  MOLECULAR_DETATACHMENT_DEVICE = "Molecular Detachment Device",
+  SISTER_PLANET_SPONSORS = "Sister Planet Sponsors",
+  SOLAR_COSMIC_RAYS = "Solar Cosmic Rays",
+  URGENT_TERRAFORMING_COMMAND = "Urgent Terraforming Command",
+  INTERPLANETARY_ALLIANCE = "Interplanetary Alliance",
+  HYDROTHERMAL_VENT_ARCHAEA = "Hydrothermal Vent Archaea",
+  WASTE_INCINERATOR = "Waste Incinerator",
+  NITROGENRICH_COMET = "Nitrogenrich Comet",
+  CUTTING_EDGE_LAB = "Cutting Edge Lab",
+  UNMANNED_AERIAL_VEHICLE = "Unmanned Aerial Vehicle"
 }

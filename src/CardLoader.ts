@@ -6,6 +6,9 @@ import {TURMOIL_CARD_MANIFEST} from './cards/turmoil/TurmoilCardManifest';
 import {VENUS_CARD_MANIFEST} from './cards/venusNext/VenusCardManifest';
 import {COMMUNITY_CARD_MANIFEST} from './cards/community/CommunityCardManifest';
 import {ARES_CARD_MANIFEST} from './cards/ares/AresCardManifest';
+/* 群友扩内容 */
+// import { EROS_CARD_MANIFEST } from "./cards/eros/ErosCardManifest";
+
 import {CardManifest} from './cards/CardManifest';
 import {ICardFactory} from './cards/ICardFactory';
 import {CardTypes, Deck} from './Deck';

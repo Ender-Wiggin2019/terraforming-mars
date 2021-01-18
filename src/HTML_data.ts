@@ -120,36 +120,36 @@ export const HTML_DATA: Map<string, string> =
       </div>
     </div>
 `],
-    [CardName._ECOLINE_, `
-    <div class="contentCorporation">
-      <div class="corporationEffectBox">
-        <div class="corporationEffectBoxLabel "style="margin-bottom:3px;"">EFFECT</div>
-        7
-        <div class="resource plant" style="margin-bottom: 0px;"></div> 
-        <span class="red-arrow"></span>
-        <div class="greenery-tile tile"style="margin-bottom:0px;margin-top: 0px;"></div><br>
-        <div class="resource-tag tag-plant "style="margin-bottom:0px;"></div>  :
-        <div class="resource money">2</div>
-        <div class="description" style="text-align:center;margin-top:0px;">
-          (Effect: You may pay 7 plants to place greenery. When play a plant tag card, gain 2 MC.)
-        </div>
-      </div>
-      <span style="font-size:50px;
-                      font-weight:normal;
-                      color:rgb(0,180,0);
-                      letter-spacing:2px;
-                      margin-left:5px;
-                      text-shadow: -1px 0 #404040, 0 1px #404040, 1px 0 #404040, 0 -1px #404040, 5px 5px 5px grey;
-                      ">
-                  ecoline
-              </span><br>
-      <div class="production-box production-box-size2" style="margin-top:5px;margin-right:10px;">
-        <div class="production plant"></div><div class="production plant"></div>
-      </div>
-       <div class="resource money">36</div> 3<div class="resource plant"></div>
-      <div class="description" style="margin-top:-3px;text-align:center;">(You start with 2 plant production, 3 plants, and 36MC)</div>
-    </div>
-`],
+//     [CardName._ECOLINE_, `
+//     <div class="contentCorporation">
+//       <div class="corporationEffectBox">
+//         <div class="corporationEffectBoxLabel "style="margin-bottom:3px;"">EFFECT</div>
+//         7
+//         <div class="resource plant" style="margin-bottom: 0px;"></div> 
+//         <span class="red-arrow"></span>
+//         <div class="greenery-tile tile"style="margin-bottom:0px;margin-top: 0px;"></div><br>
+//         <div class="resource-tag tag-plant "style="margin-bottom:0px;"></div>  :
+//         <div class="resource money">2</div>
+//         <div class="description" style="text-align:center;margin-top:0px;">
+//           (Effect: You may pay 7 plants to place greenery. When play a plant tag card, gain 2 MC.)
+//         </div>
+//       </div>
+//       <span style="font-size:50px;
+//                       font-weight:normal;
+//                       color:rgb(0,180,0);
+//                       letter-spacing:2px;
+//                       margin-left:5px;
+//                       text-shadow: -1px 0 #404040, 0 1px #404040, 1px 0 #404040, 0 -1px #404040, 5px 5px 5px grey;
+//                       ">
+//                   ecoline
+//               </span><br>
+//       <div class="production-box production-box-size2" style="margin-top:5px;margin-right:10px;">
+//         <div class="production plant"></div><div class="production plant"></div>
+//       </div>
+//        <div class="resource money">36</div> 3<div class="resource plant"></div>
+//       <div class="description" style="margin-top:-3px;text-align:center;">(You start with 2 plant production, 3 plants, and 36MC)</div>
+//     </div>
+// `],
     [CardName._TERACTOR_, `
     <div class="corporate-icon corporation-icon"></div>
     <div class="contentCorporation">
@@ -350,36 +350,36 @@ export const HTML_DATA: Map<string, string> =
 //   </div>
 // `],
 
-    [CardName._UNITED_NATIONS_MARS_INITIATIVE_, `
-    <div class="contentCorporation">
-      <div class="corporationEffectBox">
-        <div class="corporationEffectBoxLabel" style="margin-bottom: 0px;">ACTION</div>
-        <div class="resource money" style="margin-bottom: 3px;top:3px">5</div> <span class="red-arrow"></span>
-        <div class="tile rating" style="margin-bottom: 0px;margin-top: 0px;"></div>*<br>
-        <div class="tile rating"style="margin-bottom: 0px;margin-top: 0px;"></div>: <div class="resource money">2</div>
-        <div class="description" style="text-align:center;margin-top:0px;">
-          (Action:If your TR was raised this generation, you may pay 5 MC to raise 1 step. When you raise TR in generation, gain 2 MC.)
-        </div>
-      </div>
-      <div class="background-color-active" style="font-size:16px;
-                      width:100px;
-                      color: white;
-                      margin-left:19px;
-                      margin-bottom:8px;
-                      padding:5px;
-                      padding-top:5px;
-                      padding-bottom:5px;
-                      text-align:center;
-                      font-weight:normal;
-                      box-shadow:3px 3px 6px grey;
-                      ">
-                  UNITED NATIONS MARS INITIATIVE
-              </div>
-      <div class="description" style="text-align:center;margin-left:50px;">
-        <div class="resource money">40</div> &nbsp;&nbsp;&nbsp;(You start with 40 MC.)
-      </div>
-    </div>
-`],
+//     [CardName._UNITED_NATIONS_MARS_INITIATIVE_, `
+//     <div class="contentCorporation">
+//       <div class="corporationEffectBox">
+//         <div class="corporationEffectBoxLabel" style="margin-bottom: 0px;">ACTION</div>
+//         <div class="resource money" style="margin-bottom: 3px;top:3px">5</div> <span class="red-arrow"></span>
+//         <div class="tile rating" style="margin-bottom: 0px;margin-top: 0px;"></div>*<br>
+//         <div class="tile rating"style="margin-bottom: 0px;margin-top: 0px;"></div>: <div class="resource money">2</div>
+//         <div class="description" style="text-align:center;margin-top:0px;">
+//           (Action:If your TR was raised this generation, you may pay 5 MC to raise 1 step. When you raise TR in generation, gain 2 MC.)
+//         </div>
+//       </div>
+//       <div class="background-color-active" style="font-size:16px;
+//                       width:100px;
+//                       color: white;
+//                       margin-left:19px;
+//                       margin-bottom:8px;
+//                       padding:5px;
+//                       padding-top:5px;
+//                       padding-bottom:5px;
+//                       text-align:center;
+//                       font-weight:normal;
+//                       box-shadow:3px 3px 6px grey;
+//                       ">
+//                   UNITED NATIONS MARS INITIATIVE
+//               </div>
+//       <div class="description" style="text-align:center;margin-left:50px;">
+//         <div class="resource money">40</div> &nbsp;&nbsp;&nbsp;(You start with 40 MC.)
+//       </div>
+//     </div>
+// `],
     [CardName._VALLEY_TRUST_, `
         <div class="prelude-icon corporation-icon"></div>
         <div class="contentCorporation ">

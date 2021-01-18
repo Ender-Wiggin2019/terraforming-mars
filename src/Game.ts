@@ -1272,6 +1272,12 @@ export class Game implements ISerializable<SerializedGame> {
     // Literal typing makes |increments| a const
     const steps = Math.min(increments, (constants.MAX_TEMPERATURE - this.temperature) / 2);
 
+    //热公司突破：任何人升温得2热。
+    const helion = this.players.find((player) => player.isCorporation(CardName._HELION_));
+    if (helion !== undefined) {
+      player.heat += steps * 2;
+    }
+
     if (this.phase !== Phase.SOLAR) {
       // BONUS FOR HEAT PRODUCTION AT -20 and -24
       if (this.temperature < -24 && this.temperature + steps * 2 >= -24) {

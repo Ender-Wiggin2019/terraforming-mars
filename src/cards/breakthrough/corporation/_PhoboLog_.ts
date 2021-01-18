@@ -4,6 +4,9 @@ import {Game} from '../../../Game';
 import {CorporationCard} from '../../corporation/CorporationCard';
 import {CardName} from '../../../CardName';
 import {CardType} from '../../CardType';
+import { CardMetadata } from '../../CardMetadata';
+import { CardRenderer } from '../../render/CardRenderer';
+import { CardRenderItemSize } from '../../render/CardRenderItemSize';
 
 export class _PhoboLog_ implements CorporationCard {
     public name: CardName = CardName._PHOBOLOG_;
@@ -24,5 +27,19 @@ export class _PhoboLog_ implements CorporationCard {
 
       game.log('${0} drew ${1} and ${2}', (b) => b.player(player).card(drawnCards[0]).card(drawnCards[1]));
       return undefined;
+    }
+    public metadata: CardMetadata = {
+      cardNumber: 'R09',
+      description: 'You start with 10 titanium and 23 MC.As your first action, draw 2 space cards.',
+      renderData: CardRenderer.builder((b) => {
+        b.br.br;
+        b.megacredits(23).nbsp.titanium(10).digit.nbsp.cards(2).secondaryTag(Tags.SPACE);;
+        b.corpBox('effect', (ce) => {
+          ce.effectBox((eb) => {
+            eb.titanium(1).startEffect.plus(CardRenderItemSize.SMALL).megacredits(1);
+            eb.description('Effect: Your titanium resources are each worth 1 MC extra.');
+          });
+        });
+      }),
     }
 }

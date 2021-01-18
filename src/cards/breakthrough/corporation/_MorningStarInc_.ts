@@ -7,12 +7,15 @@ import {CardType} from '../../CardType';
 import {CardMetadata} from '../../CardMetadata';
 import {CardRenderer} from '../../render/CardRenderer';
 import { IProjectCard } from '../../IProjectCard';
+import { Resources } from '../../../Resources';
+import { CardRenderItemSize } from '../../render/CardRenderItemSize';
 
 export class _MorningStarInc_ implements CorporationCard {
     public name = CardName._MORNING_STAR_INC_;
     public tags = [Tags.VENUS];
     public startingMegaCredits: number = 50;
     public cardType = CardType.CORPORATION;
+    public isDisabled: boolean = false;
 
     public initialActionText: string = 'Draw 3 Venus-tag cards';
     public initialAction(player: Player, game: Game) {
@@ -31,14 +34,22 @@ export class _MorningStarInc_ implements CorporationCard {
     }
 
     public getRequirementBonus(_player: Player, _game: Game, venusOnly?: boolean): number {
-      if (venusOnly !== undefined && venusOnly) return 3;
+      if (venusOnly !== undefined && venusOnly) return 2;
       return 0;
     }
 
     public play() {
       return undefined;
     }
-
+    public canAct(): boolean {
+      if (this.isDisabled !== true) return true;
+      return false;
+    }
+    public action(player: Player) {
+      player.addProduction(Resources.MEGACREDITS, player.getTagCount(Tags.VENUS));
+      this.isDisabled = true;
+      return undefined;
+      }    
     public metadata: CardMetadata = {
       cardNumber: 'R06',
       description: 'You start with 50 MC. As your first action, reveal cards from the deck until you have revealed 3 Venus-tag cards. Take those into hand and discard the rest.',
@@ -46,8 +57,13 @@ export class _MorningStarInc_ implements CorporationCard {
         b.megacredits(50).nbsp.cards(3).secondaryTag(Tags.VENUS);
         b.corpBox('effect', (ce) => {
           ce.effectBox((eb) => {
-            eb.venus(1).startEffect.text('+/- 3');
-            eb.description('Effect: Your Venus requirements are +/- 3 steps, your choice in each case.');
+            ce.vSpace(CardRenderItemSize.MEDIUM);
+            eb.venus(1).startEffect.text('+/- 2');
+            eb.description(undefined);
+          });
+          ce.effectBox((eb) => {
+            eb.empty().startAction.productionBox((pb) => pb.megacredits(1).slash().venus(1).played).asterix();
+            eb.description('Effect: Your Venus requirements are +/- 2 steps, your choice in each case. Once per game, increase your MC production 1 step for each Venus tag you have.');
           });
         });
       }),

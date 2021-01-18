@@ -40,9 +40,9 @@ export const CardCorporationLogo = Vue.component('CardCorporationLogo', {
         result += '</div>';
       } else if (title === CardName.CREDICOR) {
         result += '<div class="card-credicor-logo">CREDICOR</div>';
-      } else if (title === CardName.ECOLINE) {
+      } else if (title === CardName.ECOLINE || title === CardName._ECOLINE_) {
         result += '<div class="card-ecoline-logo">ecoline</div>';
-      } else if (title === CardName.HELION) {
+      } else if (title === CardName.HELION || title === CardName._HELION_) {
         result += '<div class="card-helion-logo">helion</div>';
       } else if (title === CardName.INTERPLANETARY_CINEMATICS || title === CardName._INTERPLANETARY_CINEMATICS_) {
         result += '<div style="color: #020202;font-size:17px;margin-top:10px;margin-left:-87px;">INTERPLANETARY</div>';
@@ -52,7 +52,7 @@ export const CardCorporationLogo = Vue.component('CardCorporationLogo', {
         result += '<span class="card-inventrix-logo">';
         result += '<span style="color: #020202;background-color:#6bb5c7;padding-left:4px;padding-right:4px;font-size:26px;box-shadow: 6px 6px 10px grey;">X</span>';
         result += 'INVENTRIX</span>';
-      } else if (title === CardName.PHOBOLOG) {
+      } else if (title === CardName.PHOBOLOG || title === CardName._PHOBOLOG_) {
         result += '<span class="card-phobolog-logo">PHOBOLOG</span>';
       } else if (title === CardName.POINT_LUNA) {
         result += '<span class="card-luna-logo">POINT LUNA</span>';
@@ -91,7 +91,7 @@ export const CardCorporationLogo = Vue.component('CardCorporationLogo', {
         result += '<div class="card-philares-logo">PHIL<span style="color:#ff5858">A</span>RES</div>';
       } else if (title === CardName.RECYCLON) {
         result += '<div class="card-recyclon-logo">Recyclon</div>';
-      } else if (title === CardName.ROBINSON_INDUSTRIES) {
+      } else if (title === CardName.ROBINSON_INDUSTRIES || title === CardName._ROBINSON_INDUSTRIES_) {
         result += '<div class="card-robinson-logo"><div style="letter-spacing:4px;border-bottom:3px solid #ccc;margin-top:5px;">ROBINSON</div>';
         result += '<div style="border-bottom:3px solid #ccc;">•—•—•—•—•—•—•&nbsp;</div>';
         result += '<div style="letter-spacing:2px;">INDUSTRIES</div></div>';
@@ -113,7 +113,7 @@ export const CardCorporationLogo = Vue.component('CardCorporationLogo', {
         result += '<div style="text-shadow:none;box-shadow:3px 3px 6px grey;margin-right:2px;border: 1px solid red;display:inline-block;background-color:#ff5f00;">&#x25b2;<span style="color: #020202;font-size:14px;padding:0px;border:none;margin-left:-5px;">&#x25b2;</span>';
         result += '</div>THARSIS<br>&nbsp; REPUBLIC</div>';
         result += '</div>';
-      } else if (title === CardName.UNITED_NATIONS_MARS_INITIATIVE) {
+      } else if (title === CardName.UNITED_NATIONS_MARS_INITIATIVE || title === CardName._UNITED_NATIONS_MARS_INITIATIVE_) {
         result += '<span class="card-unmi-logo">UNITED<br/>NATIONS<br/>MARS<br/>INITIATIVE</span>';
       } else if (title === CardName.UTOPIA_INVEST) {
         result += '<div class="card-utopia-logo">';

@@ -43,7 +43,7 @@ export class _MiningGuild_ implements CorporationCard {
           });
           ce.effectBox((eb) => {
             eb.steel(4).digit.startAction.trade().city(CardRenderItemSize.SMALL).steel(1).brackets;
-            eb.description('Effect: Each time you get steel/titanium as placement bonus, increase 1 steel prod.You can use 4 steel to trade or pay for city standard project.)');
+            eb.description('Effect: Each time you get steel/titanium as placement bonus, increase 1 steel prod.You can use 4 steel to trade or pay for city standard project.');
           });
         });
       }),

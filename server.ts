@@ -465,6 +465,7 @@ function createGame(req: http.IncomingMessage, res: http.ServerResponse): void {
         aresHazards: true, // Not a runtime option.
         promoCardsOption: gameReq.promoCardsOption,
         communityCardsOption: gameReq.communityCardsOption,
+        erosCardsOption: gameReq.erosCardsOption,
         solarPhaseOption: gameReq.solarPhaseOption,
         removeNegativeGlobalEventsOption:
           gameReq.removeNegativeGlobalEventsOption,
