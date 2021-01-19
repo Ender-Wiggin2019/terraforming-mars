@@ -478,8 +478,8 @@ export class Player implements ISerializable<SerializedPlayer> {
     }
 
     noTagsCount += this.playedCards.filter((card) => card.cardType !== CardType.EVENT && card.tags.filter((tag) => tag !== Tags.WILDCARD).length === 0).length;
-    //事件公司hook
-    if (this.isCorporation(CardName._INTERPLANETARY_CINEMATICS_)) noTagsCount += this.playedCards.filter((card) => card.cardType == CardType.EVENT && card.tags.filter((tag) => tag !== Tags.WILDCARD).length === 0).length;
+    // //事件公司hook
+    // if (this.isCorporation(CardName._INTERPLANETARY_CINEMATICS_)) noTagsCount += this.playedCards.filter((card) => card.cardType == CardType.EVENT && card.tags.filter((tag) => tag !== Tags.WILDCARD).length === 0).length;
 
     return noTagsCount;
   }
