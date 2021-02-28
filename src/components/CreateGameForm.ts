@@ -45,6 +45,7 @@ export interface CreateGameModel {
     shuffleMapOption: boolean;
     promoCardsOption: boolean;
     communityCardsOption: boolean;
+    erosCardsOption: boolean;
     aresExtension: boolean;
     undoOption: boolean;
     showTimers: boolean;
@@ -114,6 +115,7 @@ export const CreateGameForm = Vue.component('create-game-form', {
       shuffleMapOption: false,
       promoCardsOption: true,
       communityCardsOption: false,
+      erosCardsOption: false,
       aresExtension: false,
       undoOption: true,
       showTimers: true,
@@ -353,6 +355,7 @@ export const CreateGameForm = Vue.component('create-game-form', {
       const seed = component.seed;
       const promoCardsOption = component.promoCardsOption;
       const communityCardsOption = component.communityCardsOption;
+      const erosCardsOption = component.erosCardsOption;
       const aresExtension = component.aresExtension;
       const undoOption = component.undoOption;
       const showTimers = component.showTimers;
@@ -399,6 +402,7 @@ export const CreateGameForm = Vue.component('create-game-form', {
         solarPhaseOption,
         promoCardsOption,
         communityCardsOption,
+        erosCardsOption,
         aresExtension: aresExtension,
         undoOption,
         showTimers,
@@ -543,6 +547,12 @@ export const CreateGameForm = Vue.component('create-game-form', {
                             <label for="communityCards-checkbox" class="expansion-button" :class="{forbidden:!isvip}">
                                 <div class="create-game-expansion-icon expansion-icon-community"></div>
                                 <span v-i18n>Community</span>&nbsp;<a href="https://github.com/bafolts/terraforming-mars/wiki/Variants#community" class="tooltip" target="_blank">&#9432;</a>
+                            </label>
+
+                            <input type="checkbox" name="eros" id="erosCards-checkbox" v-model="erosCardsOption"  v-if="isvip">
+                            <label for="erosCards-checkbox" class="expansion-button" :class="{forbidden:!isvip}">
+                                <div class="create-game-expansion-icon expansion-icon-eros"></div>
+                                <span v-i18n>Eros</span>&nbsp;<a href="https://github.com/bafolts/terraforming-mars/wiki/Variants#community" class="tooltip" target="_blank">&#9432;</a>
                             </label>
                         </div>
 

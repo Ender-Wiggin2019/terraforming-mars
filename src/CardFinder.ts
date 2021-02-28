@@ -16,7 +16,7 @@ import {COMMUNITY_CARD_MANIFEST} from './cards/community/CommunityCardManifest';
 import {ARES_CARD_MANIFEST} from './cards/ares/AresCardManifest';
 import {StandardProjectCard} from './cards/standardProjects/StandardProjectCard';
 /* 群友扩内容 */
-// import { EROS_CARD_MANIFEST } from "./cards/eros/ErosCardManifest";
+import { EROS_CARD_MANIFEST } from "./cards/eros/ErosCardManifest";
 
 export class CardFinder {
     private static decks: undefined | Array<CardManifest>;
@@ -33,7 +33,7 @@ export class CardFinder {
           BREAKTHROUGH_CARD_MANIFEST,
           ARES_CARD_MANIFEST,
           COMMUNITY_CARD_MANIFEST,
-          // EROS_CARD_MANIFEST
+          EROS_CARD_MANIFEST
         ];
       }
       return CardFinder.decks;

@@ -10,6 +10,7 @@ import {PROMO_CARD_MANIFEST} from '../cards/promo/PromoCardManifest';
 import {BASE_CARD_MANIFEST, CORP_ERA_CARD_MANIFEST} from '../cards/StandardCardManifests';
 import {TURMOIL_CARD_MANIFEST} from '../cards/turmoil/TurmoilCardManifest';
 import {VENUS_CARD_MANIFEST} from '../cards/venusNext/VenusCardManifest';
+import { EROS_CARD_MANIFEST } from '../cards/eros/ErosCardManifest';
 
 
 const allItems: Array<CardName> = [
@@ -45,6 +46,9 @@ export const CorporationsFilter = Vue.component('corporations-filter', {
     communityCardsOption: {
       type: Boolean,
     },
+    erosCardsOption: {
+      type: Boolean,
+    },
   },
   data: function() {
     return {
@@ -57,6 +61,7 @@ export const CorporationsFilter = Vue.component('corporations-filter', {
         ...this.turmoil ? TURMOIL_CARD_MANIFEST.corporationCards.cards.map((cf) => cf.cardName) : [],
         ...this.promoCardsOption ? PROMO_CARD_MANIFEST.corporationCards.cards.map((cf) => cf.cardName) : [],
         ...this.communityCardsOption ? COMMUNITY_CARD_MANIFEST.corporationCards.cards.map((cf) => cf.cardName) : [],
+        ...this.erosCardsOption ? EROS_CARD_MANIFEST.corporationCards.cards.map((cf) => cf.cardName) : [],
       ] as Array<CardName> | boolean /* v-model thinks this can be boolean */,
       corporationGroups: [
         {'title': CorporationGroup.ORIGINAL, 'items': BASE_CARD_MANIFEST.corporationCards.cards.concat(CORP_ERA_CARD_MANIFEST.corporationCards.cards).map((cf) => cf.cardName)},
@@ -66,6 +71,7 @@ export const CorporationsFilter = Vue.component('corporations-filter', {
         {'title': CorporationGroup.TURMOIL, 'items': TURMOIL_CARD_MANIFEST.corporationCards.cards.map((cf) => cf.cardName)},
         {'title': CorporationGroup.PROMO, 'items': PROMO_CARD_MANIFEST.corporationCards.cards.map((cf) => cf.cardName)},
         {'title': CorporationGroup.COMMUNITY, 'items': COMMUNITY_CARD_MANIFEST.corporationCards.cards.map((cf) => cf.cardName)},
+        {'title': CorporationGroup.EROS, 'items': EROS_CARD_MANIFEST.corporationCards.cards.map((cf) => cf.cardName)},
       ],
     };
   },

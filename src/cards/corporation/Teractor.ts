@@ -17,10 +17,23 @@ export class Teractor implements CorporationCard {
     public getCardDiscount(_player: Player, _game: Game, card: IProjectCard) {
       return card.tags.filter((tag) => tag === Tags.EARTH).length * 3;
     }
-    public play() {
-      return undefined;
-    }
+    // public play() {
+    //   return undefined;
+    // }
 
+    //测试用修改
+    public play(player: Player, game: Game) {
+      for (let i = 0; i < 360; i++) { 
+          player.cardsInHand.push(game.dealer.dealCard());
+      }
+      // game.increaseOxygenLevel(player, 2);
+      // game.increaseOxygenLevel(player, 2);
+      // game.increaseOxygenLevel(player, 2);
+      // game.increaseOxygenLevel(player, 2);
+      // game.increaseOxygenLevel(player, 2);
+      // game.increaseOxygenLevel(player, 2);
+      return undefined;
+  }
     public metadata: CardMetadata = {
       cardNumber: 'R30',
       description: 'You start with 60 MC.',

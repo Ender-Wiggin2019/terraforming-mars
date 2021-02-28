@@ -58,6 +58,8 @@ import {getDate} from './UserUtil';
 import {BREAKTHROUGH_CARD_MANIFEST} from './cards/breakthrough/BreakthroughCardManifest';
 import {GameSetup} from './GameSetup';
 import {CardLoader} from './CardLoader';
+import { OrOptions } from './inputs/OrOptions';
+import { SelectOption } from './inputs/SelectOption';
 
 
 export type GameId = string;
@@ -92,6 +94,7 @@ export interface GameOptions {
   turmoilExtension: boolean;
   promoCardsOption: boolean;
   communityCardsOption: boolean;
+  erosCardsOption: boolean;
   aresExtension: boolean;
   aresHazards: boolean;
   solarPhaseOption: boolean;
@@ -121,6 +124,7 @@ const DEFAULT_GAME_OPTIONS: GameOptions = {
   clonedGamedId: undefined,
   coloniesExtension: false,
   communityCardsOption: false,
+  erosCardsOption: false,
   corporateEra: true,
   customColoniesList: [],
   customCorporationsList: [],
@@ -1277,7 +1281,11 @@ export class Game implements ISerializable<SerializedGame> {
     if (helion !== undefined) {
       player.heat += steps * 2;
     }
-
+    //群友扩hook,热泉微生物hook
+    if (player.playedCards.find(card => card.name === CardName.HYDROTHERMAL_VENT_ARCHAEA)){
+      const foundCards = player.playedCards.filter((card) => card.name === CardName.HYDROTHERMAL_VENT_ARCHAEA);    
+      player.addResourceTo(foundCards[0], 1);
+    }
     if (this.phase !== Phase.SOLAR) {
       // BONUS FOR HEAT PRODUCTION AT -20 and -24
       if (this.temperature < -24 && this.temperature + steps * 2 >= -24) {
@@ -1490,6 +1498,78 @@ export class Game implements ISerializable<SerializedGame> {
     });
     // Turmoil Greens ruling policy
     PartyHooks.applyGreensRulingPolicy(this, player);
+    //增强呼吸作用hook
+    if ((player.playedCards.find((playedCard) => playedCard.name === CardName.RESPIRATION_ENHANCE) != undefined)&& ((this.getTemperature() < constants.MAX_TEMPERATURE) || (this.getOxygenLevel() < constants.MAX_OXYGEN_LEVEL))){
+      console.log("active respiration enhance...")
+      // this.defer(new DeferredAction(
+      //   player,
+      //   () => {
+      //     return new OrOptions(),true}); // Unshift that deferred action
+      if (this.getTemperature() < constants.MAX_TEMPERATURE && this.getOxygenLevel() < constants.MAX_OXYGEN_LEVEL) {
+        this.defer(new DeferredAction(
+          player,
+          () => {
+            const orOptions = new OrOptions(
+              new SelectOption('Increase temperature', 'Increase', () => {
+                this.increaseTemperature(player, 1);
+                this.log('${0} enhanced respiration and increased temperature', (b) => b.player(player));
+                return undefined;
+              }),
+              new SelectOption('Increase oxygen', 'Increase', () => {
+                this.increaseOxygenLevel(player, 1);
+                this.log('${0} increased oxygen level', (b) => b.player(player));
+                return undefined;
+              }),
+            );
+            orOptions.title = 'Select a parameter to increase';
+            return orOptions;
+          },
+        ), true); 
+        return undefined;
+      }
+      else if (this.getTemperature() < constants.MAX_TEMPERATURE && this.getOxygenLevel() === constants.MAX_OXYGEN_LEVEL) {
+        this.defer(new DeferredAction(
+          player,
+          () => {
+            const orOptions = new OrOptions(
+              new SelectOption('Increase temperature', 'Increase', () => {
+                this.increaseTemperature(player, 1);
+                this.log('${0} enhanced respiration and increased temperature', (b) => b.player(player));
+                return undefined;
+              }),
+              new SelectOption('Do not increase temperature', 'Increase', () => {
+                return undefined;
+              }),
+            );
+            orOptions.title = 'Select to increase temperature or not';
+            return orOptions;
+          },
+        ), true); 
+        return undefined;
+      }
+    }
+
+      // const action: OrOptions = new OrOptions();
+      // action.title = 'Select a parameter to increase';
+      // action.buttonLabel = 'Confirm';
+      // if (this.getTemperature() < constants.MAX_TEMPERATURE) {
+      //   action.options.push(
+      //     new SelectOption('Increase temperature', 'Increase', () => {
+      //       this.increaseTemperature(player, 1);
+      //       this.log('${0} enhanced respiration and increased temperature', (b) => b.player(player));
+      //       return undefined;
+      //     }),
+      //   );
+      // }
+      // if (this.getOxygenLevel() < constants.MAX_OXYGEN_LEVEL) {
+      //   action.options.push(
+      //     new SelectOption('Increase oxygen', 'Increase', () => {
+      //       this.increaseOxygenLevel(player, 1);
+      //       this.log('${0} increased oxygen level', (b) => b.player(player));
+      //       return undefined;
+      //     }),
+      //   );
+      // }
 
     if (shouldRaiseOxygen) return this.increaseOxygenLevel(player, 1);
     return undefined;

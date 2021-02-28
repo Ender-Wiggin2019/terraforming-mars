@@ -53,7 +53,7 @@ import {Tags} from './cards/Tags';
 import {TileType} from './TileType';
 import {VictoryPointsBreakdown} from './VictoryPointsBreakdown';
 import {_MiningGuild_} from './cards/breakthrough/corporation/_MiningGuild_';
-import {IdoFront} from './cards/promo/IdoFront';
+import {IdoFront} from './cards/eros/IdoFront';
 import {IProductionUnits} from './inputs/IProductionUnits';
 import {SelectProductionToLose} from './inputs/SelectProductionToLose';
 import {IAresGlobalParametersResponse, ShiftAresGlobalParameters} from './inputs/ShiftAresGlobalParameters';

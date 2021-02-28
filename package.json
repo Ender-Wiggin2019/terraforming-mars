@@ -41,6 +41,7 @@
     "extends": "@istanbuljs/nyc-config-typescript"
   },
   "scripts": {
+    "eros": "npm run compile && npm run templates && npm run webpack && node build/server.js",
     "build": "npm run compile && npm run templates && npm run webpack",
     "buildts": "tsc --build tsconfig.json && webpack --config webpack.config.js",
     "clean": "rm -r ./build/ ./styles.css || true",

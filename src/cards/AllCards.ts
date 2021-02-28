@@ -13,6 +13,7 @@ import {
 import {TURMOIL_CARD_MANIFEST} from './turmoil/TurmoilCardManifest';
 import {VENUS_CARD_MANIFEST} from './venusNext/VenusCardManifest';
 import {BREAKTHROUGH_CARD_MANIFEST} from './breakthrough/BreakthroughCardManifest';
+import {EROS_CARD_MANIFEST} from './eros/ErosCardManifest';
 
 export const ALL_CARD_MANIFESTS: Array<CardManifest> = [
   BASE_CARD_MANIFEST,
@@ -25,6 +26,7 @@ export const ALL_CARD_MANIFESTS: Array<CardManifest> = [
   BREAKTHROUGH_CARD_MANIFEST,
   COMMUNITY_CARD_MANIFEST,
   ARES_CARD_MANIFEST,
+  EROS_CARD_MANIFEST,
 ];
 
 export const MANIFEST_BY_MODULE: Map<GameModule, CardManifest> =

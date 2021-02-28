@@ -37,6 +37,7 @@ export interface DebugUIModel {
   community: boolean | unknown[],
   ares: boolean | unknown[],
   promo: boolean | unknown[],
+  eros: boolean | unknown[],
 }
 export const DebugUI = Vue.component('debug-ui', {
   components: {
@@ -55,6 +56,7 @@ export const DebugUI = Vue.component('debug-ui', {
       community: true,
       ares: true,
       promo: true,
+      eros: true
     } as DebugUIModel;
   },
   methods: {
@@ -69,6 +71,7 @@ export const DebugUI = Vue.component('debug-ui', {
       data.community = !data.community;
       data.promo = !data.promo;
       data.ares = !data.ares;
+      data.eros = !data.eros;
     },
     getAllStandardProjectCards: function() {
       return ALL_STANDARD_PROJECT_CARD_NAMES.sort();
@@ -121,6 +124,8 @@ export const DebugUI = Vue.component('debug-ui', {
         return this.community === true;
       case GameModule.Ares:
         return this.ares === true;
+      case GameModule.Eros:
+          return this.eros === true;
       default:
         return true;
       }
@@ -190,6 +195,12 @@ export const DebugUI = Vue.component('debug-ui', {
               <label for="community-checkbox" class="expansion-button">
                   <div class="create-game-expansion-icon expansion-icon-community"></div>
                   <span v-i18n>Community</span>
+              </label>
+              
+              <input type="checkbox" name="eros" id="eros-checkbox" v-model="eros"></input>
+              <label for="eros-checkbox" class="expansion-button">
+                  <div class="create-game-expansion-icon expansion-icon-eros"></div>
+                  <span v-i18n>Eros</span>
               </label><span/>
             </div>
             <section class="debug-ui-cards-list">

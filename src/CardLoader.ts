@@ -7,7 +7,7 @@ import {VENUS_CARD_MANIFEST} from './cards/venusNext/VenusCardManifest';
 import {COMMUNITY_CARD_MANIFEST} from './cards/community/CommunityCardManifest';
 import {ARES_CARD_MANIFEST} from './cards/ares/AresCardManifest';
 /* 群友扩内容 */
-// import { EROS_CARD_MANIFEST } from "./cards/eros/ErosCardManifest";
+import { EROS_CARD_MANIFEST } from "./cards/eros/ErosCardManifest";
 
 import {CardManifest} from './cards/CardManifest';
 import {ICardFactory} from './cards/ICardFactory';
@@ -32,6 +32,7 @@ export class CardLoader {
       [gameOptions.aresExtension, ARES_CARD_MANIFEST],
       [gameOptions.promoCardsOption, PROMO_CARD_MANIFEST],
       [gameOptions.communityCardsOption, COMMUNITY_CARD_MANIFEST],
+      [gameOptions.erosCardsOption, EROS_CARD_MANIFEST],
     ];
 
     this.manifests = manifests.filter((a) => a[0]).map((a) => a[1]);

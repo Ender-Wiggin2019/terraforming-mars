@@ -80,7 +80,7 @@ export class AresTestHelper {
       [TileType.NUCLEAR_ZONE, []],
       [TileType.RESTRICTED_AREA, []],
 
-      [TileType.DEIMOS_DOWN, []],
+      [, []],
       [TileType.GREAT_DAM, []],
       [TileType.MAGNETIC_FIELD_GENERATORS, []],
 
