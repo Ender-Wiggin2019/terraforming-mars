@@ -548,5 +548,9 @@ export enum CardName {
     RESPIRATION_ENHANCE = "Respiration Enhance",
     ELECTRIC_SHEEP = "Electric Sheep",
     ANSIBLE = "Ansible",
-    MARS_HOT_SPRING = "Mars Hot Spring"
+    MARS_HOT_SPRING = "Mars Hot Spring",
+    LARGE_ECOLOGICAL_RESERVE = "Large Ecological Reserve",
+    CLONE_TECHNOLOGY = "Clone Technology",
+    ENERGY_SUPPLY = "Energy Supply",
+    CHAOS = "CHAOS"
 }

@@ -663,7 +663,9 @@ export class Player implements ISerializable<SerializedPlayer> {
         (cardTag) => cardTag === tag,
       ).length;
     }
+    if (this.isCorporation(CardName.CHAOS)){
 
+    }
     // Leavitt Station hook
     if (tag === Tags.SCIENCE && this.scienceTagCount > 0) {
       tagCount += this.scienceTagCount;
@@ -915,7 +917,7 @@ export class Player implements ISerializable<SerializedPlayer> {
     return result;
   }
 
-  public runProductionPhase(): void {
+  public runProductionPhase(game: Game): void {
     this.actionsThisGeneration.clear();
     this.removingPlayers = [];
     this.tradesThisTurn = 0;
@@ -929,7 +931,7 @@ export class Player implements ISerializable<SerializedPlayer> {
     this.plants += this.plantProduction;
 
     if (this.corporationCard !== undefined && this.corporationCard.onProductionPhase !== undefined) {
-      this.corporationCard.onProductionPhase(this);
+      this.corporationCard.onProductionPhase(this, game);
     }
   }
 

@@ -48,8 +48,8 @@ export class Ansible implements IActionCard, IProjectCard {
       requirements: CardRequirements.builder((b) => b.tag(Tags.SCIENCE, 7)),
       renderData: CardRenderer.builder((b) => {
         b.effectBox((eb) => {
-        //   eb.empty().startAction.minus().cards(1).br;
-          eb.plus().cards(3).digit.asterix().nbsp.plus().cards(1).any.asterix();
+          eb.empty().startAction.minus().cards(1);
+          eb.plus().cards(3).digit.nbsp.plus().cards(1).any.asterix();
           eb.description('Action: Discard 1 card from your hand and THEN draw 3 cards. All OPPONENTS draw 1 card.');
         });
       }),

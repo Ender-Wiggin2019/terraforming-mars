@@ -853,7 +853,7 @@ export class Game implements ISerializable<SerializedGame> {
     this.someoneHasRemovedOtherPlayersPlants = false;
     this.players.forEach((player) => {
       player.cardDiscount = 0; // Iapetus reset hook
-      player.runProductionPhase();
+      player.runProductionPhase(this);
     });
 
     if (this.gameIsOver()) {

@@ -34,7 +34,7 @@ export interface CorporationCard extends ICard {
         card: CorporationCard
     ) => OrOptions | void;
     resourceType?: ResourceType;
-    onProductionPhase?: (player: Player) => undefined;
+    onProductionPhase?: (player: Player, game: Game) => undefined;
     isDisabled?: boolean;
     cardType: CardType;
 }
