@@ -82,11 +82,7 @@ checkComponent(
 checkComponent(
   'src/components/DebugUI',
   require('./build/src/components/DebugUI').DebugUI,
-<<<<<<< HEAD
-  ['filterText', 'filterDescription', 'base', 'corporateEra', 'prelude', 'venusNext', 'colonies', 'turmoil', 'community', 'ares', 'promo', 'eros'],
-=======
-  ['filterText', 'filterDescription', 'sortById', 'base', 'corporateEra', 'prelude', 'venusNext', 'colonies', 'turmoil', 'breakthrough', 'community', 'ares', 'promo', 'moon'],
->>>>>>> upstream/master
+  ['filterText', 'filterDescription', 'sortById', 'base', 'corporateEra', 'prelude', 'venusNext', 'colonies', 'turmoil', 'breakthrough', 'community', 'ares', 'promo', 'eros', 'moon'],
 );
 checkComponent(
   'src/components/GameHome',

@@ -60,37 +60,6 @@ export const EROS_CARD_MANIFEST = new CardManifest({
         { cardName: CardName.CHAOS, Factory: Chaos },
     ],
     preludeCards: [
-        // { cardName: CardName.RESEARCH_GRANT, Factory: ResearchGrant },
-        // {
-        //     cardName: CardName.VALUABLE_GASES,
-        //     Factory: ValuableGases,
-        //     compatibility: GameModule.Venus,
-        // },
-        // {
-        //     cardName: CardName.VENUS_FIRST,
-        //     Factory: VenusFirst,
-        //     compatibility: GameModule.Venus,
-        // },
-        // {
-        //     cardName: CardName.AEROSPACE_MISSION,
-        //     Factory: AerospaceMission,
-        //     compatibility: GameModule.Colonies,
-        // },
-        // {
-        //     cardName: CardName.TRADE_ADVANCE,
-        //     Factory: TradeAdvance,
-        //     compatibility: GameModule.Colonies,
-        // },
-        // {
-        //     cardName: CardName.POLITICAL_UPRISING,
-        //     Factory: PoliticalUprising,
-        //     compatibility: GameModule.Turmoil,
-        // },
-        // {
-        //     cardName: CardName.BY_ELECTION,
-        //     Factory: ByElection,
-        //     compatibility: GameModule.Turmoil,
-        // },
     ],
 
 });

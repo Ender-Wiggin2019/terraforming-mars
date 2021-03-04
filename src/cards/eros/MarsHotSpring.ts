@@ -9,31 +9,45 @@ import {SelectSpace} from '../../inputs/SelectSpace';
 import {TileType} from '../../TileType';
 import {ISpace} from '../../boards/ISpace';
 import {Board} from '../../boards/Board';
-import {CardMetadata} from '../CardMetadata';
 import {CardRequirements} from '../CardRequirements';
 import {CardRenderer} from '../render/CardRenderer';
+import { GlobalParameter } from '../../GlobalParameter';
+import { Card } from '../Card';
 
-export class MarsHotSpring implements IProjectCard {
-    public cost = 12;
-    public tags = [Tags.BUILDING];
-    public cardType = CardType.AUTOMATED;
-    public name = CardName.MARS_HOT_SPRING;
-
-    public canPlay(player: Player, game: Game): boolean {
-      const meetsOceanRequirements = game.board.getOceansOnBoard() >= 3 - player.getRequirementsBonus(game);
-      const canPlaceTile = this.getAvailableSpaces(player, game).length > 0;
+export class MarsHotSpring extends Card implements IProjectCard {
+    constructor() {
+      super({
+        name: CardName.MARS_HOT_SPRING,
+        cardType: CardType.AUTOMATED,
+        tags: [Tags.VENUS, Tags.JOVIAN, Tags.EARTH],
+        cost: 5,
+  
+        requirements: CardRequirements.builder((b) => b.oceans(3)),
+        metadata: {
+            cardNumber: 'Q06',
+            renderData: CardRenderer.builder((b) => {
+              b.production((pb) => pb.megacredits(2).nbsp.heat(2).digit).br;
+              b.tile(TileType.HOT_SPRING, true, false).asterix();
+            }),
+            description: 'Requires 3 ocean tiles. Increase your MC and Heat production 2 steps. Place this tile ADJACENT TO an ocean tile.',
+          },
+      });
+    };
+    public canPlay(player: Player): boolean {
+      const meetsOceanRequirements = player.game.checkMinRequirements(player, GlobalParameter.OCEANS, 3);
+      const canPlaceTile = this.getAvailableSpaces(player, player.game).length > 0;
 
       return meetsOceanRequirements && canPlaceTile;
     }
-    public play(player: Player, game: Game) {
+    public play(player: Player) {
       player.addProduction(Resources.MEGACREDITS, 2);
       player.addProduction(Resources.HEAT, 2);
 
-      const availableSpaces = this.getAvailableSpaces(player, game);
+      const availableSpaces = this.getAvailableSpaces(player, player.game);
       if (availableSpaces.length < 1) return undefined;
 
       return new SelectSpace('Select space for tile', availableSpaces, (foundSpace: ISpace) => {
-        game.addTile(player, foundSpace.spaceType, foundSpace, {tileType: TileType.HOT_SPRING});
+        player.game.addTile(player, foundSpace.spaceType, foundSpace, {tileType: TileType.HOT_SPRING});
         return undefined;
       });
     }
@@ -46,14 +60,5 @@ export class MarsHotSpring implements IProjectCard {
           ).length > 0,
         );
     }
-    public metadata: CardMetadata = {
-      cardNumber: 'Q06',
-      requirements: CardRequirements.builder((b) => b.oceans(3)),
-      renderData: CardRenderer.builder((b) => {
-        b.productionBox((pb) => pb.megacredits(2).nbsp.heat(2).digit).br;
-        b.tile(TileType.HOT_SPRING, true, false).asterix();
-      }),
-      description: 'Requires 3 ocean tiles. Increase your MC and Heat production 2 steps. Place this tile ADJACENT TO an ocean tile.',
-    };
 }
 

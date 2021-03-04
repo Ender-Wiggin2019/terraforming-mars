@@ -4,39 +4,43 @@ import { CardType } from "../CardType";
 import { Player } from "../../Player";
 import { Resources } from "../../Resources";
 import { CardName } from "../../CardName";
-import { Game } from "../../Game";
 import { MAX_TEMPERATURE, REDS_RULING_POLICY_COST } from "../../constants";
 import { PartyHooks } from "../../turmoil/parties/PartyHooks";
 import { PartyName } from "../../turmoil/parties/PartyName";
-import { CardMetadata } from "../CardMetadata";
 import { CardRenderer } from "../render/CardRenderer";
+import { Card } from "../Card";
 
+export class NitrogenRichComet extends Card implements IProjectCard {
+    constructor() {
+        super({
+          name: CardName.NITROGENRICH_COMET,
+          cardType: CardType.EVENT,
+          tags: [Tags.SPACE],
+          cost: 17,
 
-export class NitrogenRichComet implements IProjectCard {
-    public cost: number = 17;
-    public tags: Array<Tags> = [Tags.SPACE];
-    public name: CardName = CardName.NITROGENRICH_COMET;
-    public cardType: CardType = CardType.EVENT;
-    public canPlay(player: Player, game: Game): boolean {
-        const temperatureStep = game.getTemperature() < MAX_TEMPERATURE ? 1 : 0;
-        if (PartyHooks.shouldApplyPolicy(game, PartyName.REDS)) {
-            return player.canAfford(player.getCardCost(game, this) + REDS_RULING_POLICY_COST * temperatureStep, game, false, true);
+          metadata: {
+            cardNumber: 'Q17',
+            renderData: CardRenderer.builder((b) => {
+              b.temperature(1);
+              b.plants(4);
+            }),
+            description: 'Increase Temperature 1 step. Gain 4 plants.',
+          },
+        });
+      };
+
+    public canPlay(player: Player): boolean {
+        const temperatureStep = player.game.getTemperature() < MAX_TEMPERATURE ? 1 : 0;
+        if (PartyHooks.shouldApplyPolicy(player.game, PartyName.REDS)) {
+            return player.canAfford(player.getCardCost(this) + REDS_RULING_POLICY_COST * temperatureStep, false, true);
         }
 
         return true;
     }
 
-    public play(player: Player, game: Game) {
-        game.increaseTemperature(player, 1);
+    public play(player: Player) {
+        player.game.increaseTemperature(player, 1);
         player.setResource(Resources.PLANTS, 4)
         return undefined;
     }
-    public metadata: CardMetadata = {
-        cardNumber: 'Q17',
-        renderData: CardRenderer.builder((b) => {
-          b.temperature(1);
-          b.plants(4);
-        }),
-        description: 'Increase Temperature 1 step. Gain 4 plants.',
-      }
   }

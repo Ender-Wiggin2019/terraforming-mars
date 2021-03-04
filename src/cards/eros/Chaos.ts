@@ -39,26 +39,7 @@ export class Chaos implements CorporationCard{
         return undefined;
         
       });
-    //   for (const somePlayer of game.getPlayers()) {
-    //     if (somePlayer.corporationCard !== undefined && somePlayer.corporationCard.name === CardName.CHAOS) {
-    //       console.log("trigger chaos")
-    //       let resourceArray = [Resources.MEGACREDITS, Resources.STEEL, Resources.TITANIUM, Resources.PLANTS, Resources.ENERGY, Resources.HEAT]
-    //       let bonus = 0;
-    //       resourceArray.forEach((resource: Resources)=>{
-    //         let players = [...game.getPlayers()].sort(
-    //           (p1, p2) => p2.getProduction(resource) - p1.getProduction(resource),
-    //         );
-    //         if (players[0].id === somePlayer.id && players[0].getProduction(resource) > players[1].getProduction(resource) && players[0].getProduction(resource) >= 1){
-    //           bonus ++;
-    //           console.log("chaos wild ++")
-    //         }
-    //       });
-    //       somePlayer.wildTagCount = bonus;
-    //     }
-    //   }
-    // }
       if (bonus > 0) {
-        // const chaosPlayer = game.getPlayers().filter((player) => player.isCorporation(CardName.CHAOS))[0];
         this.selectResources(player, game, bonus);
       }
       return undefined;
@@ -123,21 +104,18 @@ export class Chaos implements CorporationCard{
 
     public metadata: CardMetadata = {
         cardNumber: 'Q21',
-        // description: 'You start with 42 MC.',
         renderData: CardRenderer.builder((b) => {
             b.br;
             b.megacredits(42);
             b.text('(You start with 42 MC.)', CardRenderItemSize.TINY, false, false);
             b.corpBox('effect', (ce) => {
-                ce.effectBox((eb) => {
+                ce.effect(undefined,(eb) => {
                     ce.vSpace(CardRenderItemSize.LARGE);
-                    eb.productionBox((pb) => pb.wild(1)).startEffect.wild(1).played.asterix();
-                    eb.description(undefined);
+                    eb.production((pb) => pb.wild(1)).startEffect.wild(1).played.asterix();
                 });
                 ce.vSpace();
-                ce.effectBox((eb) => {
+                ce.effect('Effect: When perform an action, each of your highest production can provide a wild tag; When producing, each of your highest tag number can provide a standard resource.',(eb) => {
                     eb.diverseTag(1).startEffect.wild(1).asterix();
-                    eb.description('Effect: When perform an action, each of your highest production can provide a wild tag; When producing, each of your highest tag number can provide a standard resource.');
                 });
             });
         }),

@@ -55,7 +55,6 @@ import {TileType} from './TileType';
 import {VictoryPointsBreakdown} from './VictoryPointsBreakdown';
 import {_MiningGuild_} from './cards/breakthrough/corporation/_MiningGuild_';
 import {IdoFront} from './cards/eros/IdoFront';
-import {IProductionUnits} from './inputs/IProductionUnits';
 import {SelectProductionToLose} from './inputs/SelectProductionToLose';
 import {IAresGlobalParametersResponse, ShiftAresGlobalParameters} from './inputs/ShiftAresGlobalParameters';
 import {Timer} from './Timer';
@@ -725,14 +724,10 @@ export class Player implements ISerializable<SerializedPlayer> {
     if (tag === Tags.SCIENCE && this.scienceTagCount > 0) {
       tagCount += this.scienceTagCount;
     }
-    // Leavitt Station hook
+    // Chaos hook
     if (tag === Tags.WILDCARD && this.wildTagCount > 0) {
       tagCount += this.wildTagCount;
     }
-    if (tag === Tags.WILDCARD) {
-      return tagCount;
-    }
-
     // PoliticalAgendas Scientists P4 hook
     if (tag === Tags.SCIENCE && this.hasTurmoilScienceTagBonus) {
       tagCount += 1;
@@ -780,6 +775,7 @@ export class Player implements ISerializable<SerializedPlayer> {
       card.tags.forEach((tag) => {
         allTags.push(tag);
       });
+    });
     if (this.isCorporation(CardName._INTERPLANETARY_CINEMATICS_) && this.playedCards.filter((card) => card.cardType == CardType.EVENT).length > 0){
       eventCount++;
       this.playedCards.filter((card) => card.cardType == CardType.EVENT)
@@ -802,7 +798,6 @@ export class Player implements ISerializable<SerializedPlayer> {
       return uniqueTags.size + eventCount;
     }
   }
-
 
   // Return true if this player has all the tags in `tags` showing.
   public checkMultipleTagPresence(tags: Array<Tags>): boolean {
@@ -1993,16 +1988,12 @@ export class Player implements ISerializable<SerializedPlayer> {
     if (this.actionsTakenThisRound > 0 && this.game.gameOptions.undoOption && !this.game.cardDrew) {
       action.options.push(this.undoTurnOption());
     }
-    this.setWaitingFor(action, () => {
-      this.actionsTakenThisRound++;
-      this.takeAction(game);
-    });
-    for (const somePlayer of game.getPlayers()) {
+    for (const somePlayer of this.game.getPlayers()) {
       if (somePlayer.corporationCard !== undefined && somePlayer.corporationCard.name === CardName.CHAOS) {
         let resourceArray = [Resources.MEGACREDITS, Resources.STEEL, Resources.TITANIUM, Resources.PLANTS, Resources.ENERGY, Resources.HEAT]
         let bonus = 0;
         resourceArray.forEach((resource: Resources)=>{
-          let players = [...game.getPlayers()].sort(
+          let players = [...this.game.getPlayers()].sort(
             (p1, p2) => p2.getProduction(resource) - p1.getProduction(resource),
           );
           if (players[0].id === somePlayer.id && players[0].getProduction(resource) > players[1].getProduction(resource) && players[0].getProduction(resource) >= 1){
@@ -2011,9 +2002,9 @@ export class Player implements ISerializable<SerializedPlayer> {
         });
         somePlayer.wildTagCount = bonus;
       }
+    }
     return action;
   }
-
 
   private allOtherPlayersHavePassed(): boolean {
     const game = this.game;

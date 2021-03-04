@@ -2,20 +2,31 @@ import {IProjectCard} from '../IProjectCard';
 import {Tags} from '../Tags';
 import {CardType} from '../CardType';
 import {Player} from '../../Player';
-import {Game} from '../../Game';
 import {SelectCard} from '../../inputs/SelectCard';
 import {CardName} from '../../CardName';
 import {Resources} from '../../Resources';
 import {ICard} from '../ICard';
-import {CardMetadata} from '../CardMetadata';
 import {CardRenderer} from '../render/CardRenderer';
+import { Card } from '../Card';
 
-export class CloneTechnology implements IProjectCard {
-  public cost = 13;
-  public tags = [Tags.SCIENCE, Tags.MICROBE];
-  public name = CardName.CLONE_TECHNOLOGY;
-  public cardType = CardType.AUTOMATED;
-  public hasRequirements = false;
+export class CloneTechnology extends Card implements IProjectCard {
+  constructor() {
+    super({
+      cardType: CardType.AUTOMATED,
+      name: CardName.CLONE_TECHNOLOGY,
+      tags: [Tags.SCIENCE, Tags.MICROBE],
+      cost: 13,
+      metadata: {
+        cardNumber: 'Q04',
+        renderData: CardRenderer.builder((b) => {
+            b.production((pb) => pb.text('X').plants(1).played).nbsp.text('X').plants(1).asterix();
+        }),
+        description: 'Duplicate the production box and plant resource of one of your plant cards.',
+        victoryPoints: 1,
+      },
+    });
+  }
+
   public canPlay(player: Player): boolean {
     return this.getAvailableCards(player).length > 0;
   }
@@ -99,7 +110,7 @@ export class CloneTechnology implements IProjectCard {
     return availableCards;
   }
 
-  public play(player: Player, game: Game) {
+  public play(player: Player) {
     const availableCards = this.getAvailableCards(player);
 
     if (availableCards.length === 0) {
@@ -131,7 +142,7 @@ export class CloneTechnology implements IProjectCard {
       new Updater(CardName.GRASS, 0, 0, 1, 0, 3),
       new Updater(CardName.HEATHER, 0, 0, 1, 0, 1),
       new Updater(CardName.BUSHES, 0, 0, 2, 0, 2),
-      new Updater(CardName.GREENHOUSES, 0, 0, 0, 0, game.getCitiesInPlay()),
+      new Updater(CardName.GREENHOUSES, 0, 0, 0, 0, player.game.getCitiesInPlay()),
       new Updater(CardName.FARMING, 0, 2, 2, 0, 2),
       new Updater(CardName.LICHEN, 0, 0, 0, 0, 0),
       new Updater(CardName.TUNDRA_FARMING, 0, 2, 1, 0, 1),
@@ -140,7 +151,7 @@ export class CloneTechnology implements IProjectCard {
       new Updater(CardName.SNOW_ALGAE, 0, 0, 0, 1, 1),
       new Updater(CardName.FREYJA_BIODOMES, -1, 2, 0, 0, 0),
       new Updater(CardName.VENUS_SOILS, 0, 0, 1, 0, 0),
-      new Updater(CardName.ECOLOGY_RESEARCH, 0, 0, player.getColoniesCount(game), 0, 0),
+      new Updater(CardName.ECOLOGY_RESEARCH, 0, 0, player.getColoniesCount(), 0, 0),
       new Updater(CardName.BIOSPHERE_SUPPORT, 0, -1, 2, 0, 0),
       new Updater(CardName.DOME_FARMING, 0, 2, 1, 0, 0),
       new Updater(CardName.ECOLOGY_EXPERTS, 0, 0, 1, 0, 0),
@@ -169,18 +180,11 @@ export class CloneTechnology implements IProjectCard {
       player.addProduction(Resources.HEAT, result.heatProduction);
       player.plants += result.plantResource;
 
-      game.log('${0} copied ${1} production and plant resource with ${2}', (b) =>
+      player.game.log('${0} copied ${1} production and plant resource with ${2}', (b) =>
         b.player(player).cardName(result.name).card(this));
 
       return undefined;
     });
   }
-  public metadata: CardMetadata = {
-    cardNumber: 'Q04',
-    renderData: CardRenderer.builder((b) => {
-      b.productionBox((pb) => pb.text('X').plants(1).played).nbsp.text('X').plants(1).asterix();
-    }),
-    description: 'Duplicate the production box and plant resource of one of your plant cards.',
-    victoryPoints: 1,
-  }
+
 }

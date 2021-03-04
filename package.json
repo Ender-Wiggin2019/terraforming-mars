@@ -42,22 +42,6 @@
     "extends": "@istanbuljs/nyc-config-typescript"
   },
   "scripts": {
-<<<<<<< HEAD
-    "eros": "npm run compile && npm run templates && npm run webpack && node build/server.js",
-    "build": "npm run compile && npm run templates && npm run webpack",
-    "buildts": "tsc --build tsconfig.json && webpack --config webpack.config.js",
-    "clean": "rm -r ./build/ ./styles.css || true",
-    "compile": "tsc",
-    "cover": "nyc mocha --file build/tests/utils/Vue.js --recursive build/tests",
-    "fix": "eslint --fix src server.ts script.ts tests --ext ts",
-    "lessc": "lessc src/styles/common.less styles.css",
-    "lint": "eslint src server.ts script.ts tests --ext ts",
-    "precover": "tsc --build tsconfig-test.json",
-    "prebuild": "node make_static_json.js && lessc src/styles/common.less styles.css",
-    "pretest": "tsc --build tsconfig-test.json",
-    "start": "node build/server.js",
-    "starttest": "node build/server_test.js",
-=======
     "build": " npm run makeJson && npm run makeCss && npm run compile && npm run templates && npm run webpack && npm run lint",
     "buildts": "tsc --build src/tsconfig.json && webpack --config webpack.config.js",
     "clean": "rm -r ./build/ ./src/genfiles/ || true",
@@ -70,7 +54,6 @@
     "makeJson": "node make_static_json.js",
     "start": "node build/src/server.js",
     "starttest": "node build/src/server_test.js",
->>>>>>> upstream/master
     "templates": "node compile-vue-templates.js && tsc --build tsconfig-vue.json",
     "test": "mocha --file build/tests/utils/Vue.js --recursive build/tests",
     "pretest": "tsc --build tests/tsconfig.json",

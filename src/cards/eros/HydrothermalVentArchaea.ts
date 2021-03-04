@@ -2,26 +2,42 @@ import { IProjectCard } from "../IProjectCard";
 import { Tags } from "../Tags";
 import { CardType } from "../CardType";
 import { Player } from "../../Player";
-import { Game } from "../../Game";
 import { ResourceType } from "../../ResourceType";
 import { CardName } from "../../CardName";
 import { IResourceCard } from "../ICard";
-import { CardMetadata } from "../CardMetadata";
 import { CardRenderer } from "../render/CardRenderer";
-import { CardRenderItemSize } from "../render/CardRenderItemSize";
 import { CardRequirements } from "../CardRequirements";
 import { CardRenderDynamicVictoryPoints } from "../render/CardRenderDynamicVictoryPoints";
+import { GlobalParameter } from "../../GlobalParameter";
+import { Card } from "../Card";
 
-export class HydrothermalVentArchaea implements IProjectCard, IResourceCard {
-    public cost: number = 8;
-    public tags: Array<Tags> = [Tags.MICROBE];
-    public cardType: CardType = CardType.ACTIVE;
-    public name: CardName = CardName.HYDROTHERMAL_VENT_ARCHAEA;
-    public resourceType: ResourceType = ResourceType.MICROBE;
+export class HydrothermalVentArchaea extends Card implements IProjectCard, IResourceCard {
+    constructor() {
+        super({
+          cardType: CardType.ACTIVE,
+          name: CardName.HYDROTHERMAL_VENT_ARCHAEA,
+          tags: [Tags.MICROBE],
+          cost: 8,
+          resourceType: ResourceType.MICROBE,
+    
+          requirements: CardRequirements.builder((b) => b.oceans(3)),
+          metadata: {
+            cardNumber: 'Q12',
+            renderData: CardRenderer.builder((b) => {
+              b.effect('Effect: When you increase Temperature 1 step, add a microbe to this card.',(eb) => {
+                eb.temperature(1).startEffect.microbes(1);
+              }).br;
+              b.vpText('1 VP per 2 Microbes on this card');
+            }),
+            description: 'Requires 3 oceans.',
+            victoryPoints: CardRenderDynamicVictoryPoints.microbes(1, 2),
+          },
+        });
+      }
     public resourceCount: number = 0;
 
-    public canPlay(player: Player, game: Game): boolean {
-        return game.board.getOceansOnBoard() >= 3 - player.getRequirementsBonus(game);
+    public canPlay(player: Player): boolean {
+        return player.game.checkMinRequirements(player, GlobalParameter.OCEANS, 3);
     }
 
     public getVictoryPoints(): number {
@@ -31,17 +47,4 @@ export class HydrothermalVentArchaea implements IProjectCard, IResourceCard {
     public play() {
         return undefined;
     }
-    public metadata: CardMetadata = {
-        cardNumber: 'Q12',
-        requirements: CardRequirements.builder((b) => b.oceans(3)),
-        renderData: CardRenderer.builder((b) => {
-          b.effectBox((eb) => {
-            eb.temperature(1).startEffect.microbes(1);
-            eb.description('Effect: When you increase Temperature 1 step, add a microbe to this card.');
-          }).br;
-          b.text('1 VP per 2 Microbes on this card', CardRenderItemSize.TINY, true);
-        }),
-        description: 'Requires 3 oceans.',
-        victoryPoints: CardRenderDynamicVictoryPoints.microbes(1, 2),
-      };
   }

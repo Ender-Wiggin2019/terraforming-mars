@@ -4,33 +4,35 @@ import { CardType } from "../CardType";
 import { Player } from "../../Player";
 import { Resources } from "../../Resources";
 import { CardName } from "../../CardName";
-import { Game } from "../../Game";
-import { CardMetadata } from "../CardMetadata";
 import { CardRenderer } from "../render/CardRenderer";
+import { Card } from "../Card";
 
-export class SolarCosmicRays implements IProjectCard {
-    public cost: number = 27;
-    public tags: Array<Tags> = [Tags.SPACE];
-    public name: CardName = CardName.SOLAR_COSMIC_RAYS;
-    public cardType: CardType = CardType.AUTOMATED;
-
-    public play(player: Player, game:Game) {
+export class SolarCosmicRays extends Card implements IProjectCard {
+    constructor() {
+      super({
+        name: CardName.SOLAR_COSMIC_RAYS,
+        cardType: CardType.AUTOMATED,
+        tags: [Tags.SPACE],
+        cost: 27,
+  
+        metadata: {
+            cardNumber: 'Q01',
+            renderData: CardRenderer.builder((b) => {
+            b.production((pb) => pb.energy(1)).nbsp;
+              b.production((pb) => pb.heat(1).slash().energy(1).any.asterix());
+            }),
+            description: 'Increase your energy production 1 steps. For each energy production in play, you increase your heat production 1 step.',
+          },
+      });
+    };
+    public play(player: Player) {
         player.addProduction(Resources.ENERGY,1);
         let alllEnergyProd = 0;
-        for (const player of game.getPlayers()) {
-            alllEnergyProd += player.getProduction(Resources.ENERGY);
+        for (const everyPlayer of player.game.getPlayers()) {
+            alllEnergyProd += everyPlayer.getProduction(Resources.ENERGY);
         }
         player.addProduction(Resources.HEAT, alllEnergyProd);
         return undefined;
     }
-    
-    public metadata: CardMetadata = {
-        cardNumber: 'Q01',
-        renderData: CardRenderer.builder((b) => {
-        b.productionBox((pb) => pb.energy(1)).nbsp;
-          b.productionBox((pb) => pb.heat(1).slash().energy(1).any.asterix());
-        }),
-        description: 'Increase your energy production 1 steps. For each energy production in play, you increase your heat production 1 step.',
-      }
 }
   
