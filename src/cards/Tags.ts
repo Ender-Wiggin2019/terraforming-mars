@@ -11,6 +11,7 @@ export enum Tags {
     ANIMAL = 'animal',
     CITY = 'city',
     WILDCARD = 'wild',
+    MOON = 'moon',
     EVENT = 'event',
     STEEL = "STEEL"
 }

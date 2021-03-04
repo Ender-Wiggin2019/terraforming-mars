@@ -7,7 +7,7 @@
     
     "You start with 2 energy production and 44 MC.":"起始拥有2电力产量和44MC",
     
-    "You start with 3 heat production, 3 heat and 48 MC.":"起始拥有3点热产量，3点热能和48MC",
+    "You start with 3 heat production and 48 MC.":"起始拥有3点热产量和48MC",
     
     "You start with 55 MC. As your first action, draw 1 earth tag card.":"起始拥有55MC，作为第一个行动，抽取1张带有地球标志的卡牌",
     
@@ -47,9 +47,10 @@
 
     "Effect: Each time you get steel/titanium as placement bonus, increase 1 steel prod.You can use 4 steel to trade or pay for city standard project.":"效果:每当你因放置一个版块而获得钢铁资源或钛合金资源时,提升你的钢铁产能1级；你可以使用4铁贸易；你可以使用铁标动城市。",
 
-    "You start with 40 MC and 10 steel. As your first action, place a community on a non-reserved area.":"起始拥有40MC和10个钢铁。作为你的第一个行动，你可以放置一个社区（你的玩家标记）到一个非保留区。",
+    "You start with 40 MC and 10 steel. AS YOUR FIRST ACTION, PLACE A COMMUNITY [PLAYER MARKER] ON A NON-RESERVED AREA.":"起始拥有40MC和10个钢铁。作为你的第一个行动，你可以放置一个社区（你的玩家标记）到一个非保留区。",
 
-    "Action: place a community on a non-reserved area adjacent to one of your tiles or marked areas.Effect: marked areas are reserved for you. when you place a tile there, gain 3 MC. When you place a tile, gain 1 MC for each tiles you own adjacent to it.":"行动：将一个玩家标记放置在非保留区，需要和你的版块或者玩家标记相邻。效果：只有你能在拥有你的玩家标记的位置放置版块，当你如此做后，获得3MC；当你放置板块时，你的每个与之相邻的板块为你提供1MC。",
+    "Effect: marked areas are reserved for you. when you place a tile there, gain 3 MC. When you place a tile, gain 1 MC for each tiles you own adjacent to it":"效果：只有你能在拥有你的玩家标记的位置放置版块，当你如此做后，获得3MC；当你放置板块时，你的每个与之相邻的板块为你提供1MC。",
+    "Action: place a community on a non-reserved area adjacent to one of your tiles or marked areas.":"行动：将一个玩家标记放置在非保留区，需要和你的版块或者玩家标记相邻。",
 
     "Effect: Buying cards to hand costs 1MC. You can draw 5 cards in research phase (keep 2 in first turn if drafting)":"效果:购买卡牌到手牌的价格变为1MC。研究阶段，你可以抽取5张手牌而非4张，如果是轮抽模式则在第一轮轮抽选择保留2张。",
 

@@ -1,12 +1,11 @@
 import {CorporationCard} from '../../corporation/CorporationCard';
 import {Player} from '../../../Player';
 import {Tags} from '../../Tags';
-import {Game} from '../../../Game';
 import {CardName} from '../../../CardName';
 import {CardType} from '../../CardType';
 import {CardMetadata} from '../../CardMetadata';
 import {CardRenderer} from '../../render/CardRenderer';
-import { IProjectCard } from '../../IProjectCard';
+import {IProjectCard} from '../../IProjectCard';
 
 export class _InterplanetaryCinematics_ implements CorporationCard {
     public name = CardName._INTERPLANETARY_CINEMATICS_;
@@ -14,7 +13,7 @@ export class _InterplanetaryCinematics_ implements CorporationCard {
     public startingMegaCredits: number = 50;
     public cardType = CardType.CORPORATION;
 
-    public onCardPlayed(player: Player, _game: Game, card: IProjectCard) {
+    public onCardPlayed(player: Player, card: IProjectCard) {
       if (player.corporationCard !== undefined && player.corporationCard.name === this.name && card.cardType === CardType.EVENT) {
         player.megaCredits += 3;
       }
@@ -29,9 +28,9 @@ export class _InterplanetaryCinematics_ implements CorporationCard {
         b.br.br.br;
         b.megacredits(50);
         b.corpBox('effect', (ce) => {
-          ce.effectBox((eb) => {
+          ce.effect('Your tags on event work the same as green or blue card. Event tag is a new tag for you. Each time you play an event, you gain 3 MC.', (eb) => {
             eb.event().played.startEffect.megacredits(3);
-            eb.description('Effect: Your tags on event work the same as green or blue card. Event tag is a new tag for you. Each time you play an event, you gain 3 MC.');
+            eb.description();
           });
         });
       }),

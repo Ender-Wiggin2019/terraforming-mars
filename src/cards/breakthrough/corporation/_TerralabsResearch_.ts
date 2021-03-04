@@ -11,6 +11,7 @@ export class _TerralabsResearch_ implements CorporationCard {
     public tags: Array<Tags> = [Tags.SCIENCE, Tags.EARTH];
     public startingMegaCredits: number = 20;
     public cardType: CardType = CardType.CORPORATION;
+    public cardCost = 1;
 
     public play(player: Player) {
       player.decreaseTerraformRating();
@@ -24,9 +25,8 @@ export class _TerralabsResearch_ implements CorporationCard {
         b.br;
         b.megacredits(20).nbsp.minus().tr(1);
         b.corpBox('effect', (ce) => {
-          ce.effectBox((eb) => {
+          ce.effect('Buying cards to hand costs 1MC. You can draw 5 cards in research phase (keep 2 in first turn if drafting)', (eb) => {
             eb.cards(1).startEffect.megacredits(1).asterix();
-            eb.description('Effect: Buying cards to hand costs 1MC. You can draw 5 cards in research phase (keep 2 in first turn if drafting)');
           });
         });
       }),

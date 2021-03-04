@@ -71,7 +71,7 @@ export const CardCorporationLogo = Vue.component('CardCorporationLogo', {
         result += '<span class="card-aridor-logo">ARIDOR</span>';
       } else if (title === CardName.ASTRODRILL) {
         result += '<span class="card-astrodril-logo">Astrodrill</span>';
-      } else if (title === CardName.FACTORUM || title == CardName._FACTORUM_) {
+      } else if (title === CardName.FACTORUM || title === CardName._FACTORUM_) {
         result += '<span class="card-factorum-logo">FACTORUM</span>';
       } else if (title === CardName.MANUTECH) {
         result += '<span class="card-manutech-logo"><span style="color:white;background:#e63900;text-shadow:none;padding-left:2px;">MA</span>NUTECH</span>';
@@ -95,7 +95,7 @@ export const CardCorporationLogo = Vue.component('CardCorporationLogo', {
         result += '<div class="card-robinson-logo"><div style="letter-spacing:4px;border-bottom:3px solid #ccc;margin-top:5px;">ROBINSON</div>';
         result += '<div style="border-bottom:3px solid #ccc;">•—•—•—•—•—•—•&nbsp;</div>';
         result += '<div style="letter-spacing:2px;">INDUSTRIES</div></div>';
-      } else if (title === CardName.SPLICE) {
+      } else if (title === CardName.SPLICE || title === CardName._SPLICE_) {
         result += '<div class="card-splice-logo"><div>SPLI<span style="color:red">C</span>E</div>';
         result += '<div STYLE="height:3px;background:red;margin-top:-3px;"></div>';
         result += '<div STYLE="font-size:10px;line-height:18px;">TACTICAL GENOMICS</div>';
@@ -109,9 +109,8 @@ export const CardCorporationLogo = Vue.component('CardCorporationLogo', {
         result += '<span class="card-teractor-logo">TERACTOR</span>';
       } else if (title === CardName.THARSIS_REPUBLIC || title === CardName._THARSIS_REPUBLIC_) {
         result += '<div class="card-tharsis-logo">';
-        result += '<div style="color: #020202;font-size:24px;text-shadow:6px 6px 6px grey;">';
-        result += '<div style="text-shadow:none;box-shadow:3px 3px 6px grey;margin-right:2px;border: 1px solid red;display:inline-block;background-color:#ff5f00;">&#x25b2;<span style="color: #020202;font-size:14px;padding:0px;border:none;margin-left:-5px;">&#x25b2;</span>';
-        result += '</div>THARSIS<br>&nbsp; REPUBLIC</div>';
+        result += '<div class="card-tharsis-logo-image"></div>';
+        result += '<div class="card-tharsis-logo-text">Tharsis Republic</div>';
         result += '</div>';
       } else if (title === CardName.UNITED_NATIONS_MARS_INITIATIVE || title === CardName._UNITED_NATIONS_MARS_INITIATIVE_) {
         result += '<span class="card-unmi-logo">UNITED<br/>NATIONS<br/>MARS<br/>INITIATIVE</span>';
@@ -145,6 +144,20 @@ export const CardCorporationLogo = Vue.component('CardCorporationLogo', {
         result += '</div>';
       } else if (title == CardName.CHAOS) {
         result += '<span class="card-chaos-logo">CHAOS</span>';
+      } else if (title === CardName.ERIS) {
+        result += '<div class="card-eris-logo">Eris</div>';
+      } else if (title === CardName.COLONIAL_ONE) {
+        result += '<div class="card-colonial-one-logo">Colonial One</div>';
+      } else if (title === CardName.HOTSPRINGS) {
+        result += '<div class="card-hotsprings-logo">Hotsprings</div>';
+      } else if (title === CardName.JUNK_VENTURES) {
+        result += '<div class="card-junk-ventures-logo">Junk Ventures</div>';
+      } else if (title === CardName.ARISTARCHUS) {
+        result += '<div class="card-aristarchus-logo">Aristarchus</div>';
+      } else if (title === CardName.LABOUR_UNION) {
+        result += '<div class="card-labour-union-logo">Labour Union</div>';
+      } else if (title === CardName.UNITED_NATIONS_MISSION_ONE) {
+        result += '<span class="card-unmo-logo">UNITED NATIONS<br/>MISSION ONE</span>';
       }
 
       return result;

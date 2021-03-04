@@ -11,6 +11,8 @@ import {BASE_CARD_MANIFEST, CORP_ERA_CARD_MANIFEST} from '../cards/StandardCardM
 import {TURMOIL_CARD_MANIFEST} from '../cards/turmoil/TurmoilCardManifest';
 import {VENUS_CARD_MANIFEST} from '../cards/venusNext/VenusCardManifest';
 import { EROS_CARD_MANIFEST } from '../cards/eros/ErosCardManifest';
+import {ARES_CARD_MANIFEST} from '../cards/ares/AresCardManifest';
+import {MOON_CARD_MANIFEST} from '../cards/moon/MoonCardManifest';
 
 
 const allItems: Array<CardName> = [
@@ -21,6 +23,8 @@ const allItems: Array<CardName> = [
   ...TURMOIL_CARD_MANIFEST.corporationCards.cards.map((cf) => cf.cardName),
   ...PROMO_CARD_MANIFEST.corporationCards.cards.map((cf) => cf.cardName),
   ...COMMUNITY_CARD_MANIFEST.corporationCards.cards.map((cf) => cf.cardName),
+  ...ARES_CARD_MANIFEST.corporationCards.cards.map((cf) => cf.cardName),
+  ...MOON_CARD_MANIFEST.corporationCards.cards.map((cf) => cf.cardName),
 ];
 
 export const CorporationsFilter = Vue.component('corporations-filter', {
@@ -49,6 +53,9 @@ export const CorporationsFilter = Vue.component('corporations-filter', {
     erosCardsOption: {
       type: Boolean,
     },
+    moonExpansion: {
+      type: Boolean,
+    },
   },
   data: function() {
     return {
@@ -62,6 +69,7 @@ export const CorporationsFilter = Vue.component('corporations-filter', {
         ...this.promoCardsOption ? PROMO_CARD_MANIFEST.corporationCards.cards.map((cf) => cf.cardName) : [],
         ...this.communityCardsOption ? COMMUNITY_CARD_MANIFEST.corporationCards.cards.map((cf) => cf.cardName) : [],
         ...this.erosCardsOption ? EROS_CARD_MANIFEST.corporationCards.cards.map((cf) => cf.cardName) : [],
+        ...this.moonExpansion ? MOON_CARD_MANIFEST.corporationCards.cards.map((cf) => cf.cardName) : [],
       ] as Array<CardName> | boolean /* v-model thinks this can be boolean */,
       corporationGroups: [
         {'title': CorporationGroup.ORIGINAL, 'items': BASE_CARD_MANIFEST.corporationCards.cards.concat(CORP_ERA_CARD_MANIFEST.corporationCards.cards).map((cf) => cf.cardName)},
@@ -72,6 +80,7 @@ export const CorporationsFilter = Vue.component('corporations-filter', {
         {'title': CorporationGroup.PROMO, 'items': PROMO_CARD_MANIFEST.corporationCards.cards.map((cf) => cf.cardName)},
         {'title': CorporationGroup.COMMUNITY, 'items': COMMUNITY_CARD_MANIFEST.corporationCards.cards.map((cf) => cf.cardName)},
         {'title': CorporationGroup.EROS, 'items': EROS_CARD_MANIFEST.corporationCards.cards.map((cf) => cf.cardName)},
+        {'title': CorporationGroup.MOON, 'items': MOON_CARD_MANIFEST.corporationCards.cards.map((cf) => cf.cardName)},
       ],
     };
   },
@@ -148,14 +157,17 @@ export const CorporationsFilter = Vue.component('corporations-filter', {
     communityCardsOption: function(enabled) {
       enabled ? this.selectAll(CorporationGroup.COMMUNITY) : this.selectNone(CorporationGroup.COMMUNITY);
     },
+    moonExpansion: function(enabled) {
+      enabled ? this.selectAll(CorporationGroup.MOON) : this.selectNone(CorporationGroup.MOON);
+    },
   },
   template: `
     <div class="corporations-filter">
         <div class="corporations-filter-toolbox-cont">
             <h2>Corporations</h2>
             <div class="corporations-filter-toolbox corporations-filter-toolbox--topmost">
-                <a href="#" v-on:click.prevent="selectAll('All')">All</a> | 
-                <a href="#" v-on:click.prevent="selectNone('All')">None</a> | 
+                <a href="#" v-on:click.prevent="selectAll('All')">All</a> |
+                <a href="#" v-on:click.prevent="selectNone('All')">None</a> |
                 <a href="#" v-on:click.prevent="invertSelection('All')">Invert</a>
             </div>
         </div>
@@ -172,7 +184,7 @@ export const CorporationsFilter = Vue.component('corporations-filter', {
                 <label class="form-checkbox">
                     <input type="checkbox" v-model="selectedCorporations" :value="corporation"/>
                     <i class="form-icon"></i>{{ corporation }}
-                </label>    
+                </label>
             </div>
         </div>
     </div>

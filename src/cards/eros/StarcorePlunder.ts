@@ -36,7 +36,7 @@ export class StarcorePlunder implements IProjectCard {
     public metadata: CardMetadata = {
         cardNumber: 'Q07',
         renderData: CardRenderer.builder((b) => {
-          b.productionBox((pb) => {
+          b.production((pb) => {
               pb.megacredits(3).nbsp.steel(3).digit.nbsp.titanium(3).digit.br;
               pb.plants(3).digit.nbsp.energy(3).digit.nbsp.heat(3).digit;
             });
