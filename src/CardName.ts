@@ -552,5 +552,8 @@ export enum CardName {
     LARGE_ECOLOGICAL_RESERVE = "Large Ecological Reserve",
     CLONE_TECHNOLOGY = "Clone Technology",
     ENERGY_SUPPLY = "Energy Supply",
-    CHAOS = "CHAOS"
+    CHAOS = "Chaos",
+    COW = "Cow",
+    STARCORE_PLUNDER = "Starcore Plunter",
+    JOVIAN_EXPEDITION = "Jovian Expedition"
 }

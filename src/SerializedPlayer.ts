@@ -48,6 +48,7 @@ export interface SerializedPlayer {
     removedFromPlayCards: Array<IProjectCard>;
     removingPlayers: Array<string>;
     scienceTagCount: number;
+    wildTagCount: number;
     steel: number;
     steelProduction: number;
     steelValue: number;

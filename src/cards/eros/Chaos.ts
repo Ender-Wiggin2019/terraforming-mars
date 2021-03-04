@@ -1,6 +1,5 @@
 import {CorporationCard} from '../corporation/CorporationCard';
 import {Player} from '../../Player';
-import {ResourceType} from '../../ResourceType';
 import {CardName} from '../../CardName';
 import {CardType} from '../CardType';
 import {CardMetadata} from '../CardMetadata';
@@ -11,44 +10,53 @@ import { SelectAmount } from '../../inputs/SelectAmount';
 import { ITagCount } from '../../ITagCount';
 import { AndOptions } from '../../inputs/AndOptions';
 import { DeferredAction } from '../../deferredActions/DeferredAction';
+import { Tags } from '../Tags';
 
 export class Chaos implements CorporationCard{
     public name = CardName.CHAOS;
     public tags = [];
-    public startingMegaCredits: number = 40;
-    public resourceType = ResourceType.PRESERVATION;
-    public resourceCount: number = 0;
+    public startingMegaCredits: number = 42;
     public cardType = CardType.CORPORATION;
 
-    public play(player: Player) {
-      player.decreaseTerraformRatingSteps(2);
+    public play() {
       return undefined;
     }
 
-    public getVictoryPoints(): number {
-      return Math.floor(this.resourceCount);
-    }
-
-    public onCardPlayed(player: Player, game: Game){
-        
-
-    }
     public onProductionPhase(player: Player, game: Game) {
       let bonus: number = 0;
       const playerTags : ITagCount[] = player.getAllTags();
 
       playerTags.forEach((tag) => {
-        const tagData = playerTags.find((data) => data.tag === tag.tag);
-        const amount = game.getPlayers()
-        .filter((aPlayer) => aPlayer !== player)
-        .map((opponent) => opponent.getTagCount(tag.tag, false, false))
-        .reduce((a, c) => a + c, 0);
+        const tagData = playerTags.find((data) => data.tag === tag.tag && data.tag !== Tags.WILDCARD);
+        let players = [...game.getPlayers()].sort(
+            (p1, p2) => p2.getTagCount(tag.tag, false, false) - p1.getTagCount(tag.tag, false, false)
+        );
         if (tagData === undefined) bonus += 0;
-        else if (tagData.count > amount && tagData.count >= 1) bonus += 1;
+        else if (players[0].corporationCard!= undefined && players[0].corporationCard === this && players[0].getTagCount(tag.tag, false, false) > players[1].getTagCount(tag.tag, false, false) && tagData.count >= 1) {
+            bonus += 1;
+            console.log(tag.tag)
+        }
         return undefined;
         
       });
-
+    //   for (const somePlayer of game.getPlayers()) {
+    //     if (somePlayer.corporationCard !== undefined && somePlayer.corporationCard.name === CardName.CHAOS) {
+    //       console.log("trigger chaos")
+    //       let resourceArray = [Resources.MEGACREDITS, Resources.STEEL, Resources.TITANIUM, Resources.PLANTS, Resources.ENERGY, Resources.HEAT]
+    //       let bonus = 0;
+    //       resourceArray.forEach((resource: Resources)=>{
+    //         let players = [...game.getPlayers()].sort(
+    //           (p1, p2) => p2.getProduction(resource) - p1.getProduction(resource),
+    //         );
+    //         if (players[0].id === somePlayer.id && players[0].getProduction(resource) > players[1].getProduction(resource) && players[0].getProduction(resource) >= 1){
+    //           bonus ++;
+    //           console.log("chaos wild ++")
+    //         }
+    //       });
+    //       somePlayer.wildTagCount = bonus;
+    //     }
+    //   }
+    // }
       if (bonus > 0) {
         // const chaosPlayer = game.getPlayers().filter((player) => player.isCorporation(CardName.CHAOS))[0];
         this.selectResources(player, game, bonus);
@@ -112,19 +120,26 @@ export class Chaos implements CorporationCard{
           () => selectResources,
         ));
       }
+
     public metadata: CardMetadata = {
-      cardNumber: 'Q21',
-      description: 'You start with 40 MC.',
-      renderData: CardRenderer.builder((b) => {
-        b.br.br.br;
-        b.megacredits(40);
-        b.corpBox('effect', (ce) => {
-          ce.effectBox((eb) => {
-            eb.plate('Action').startEffect.wild(1).played.slash(CardRenderItemSize.SMALL).productionBox((pb) => pb.wild(1)).asterix().br;;
-            eb.plate('Production').startEffect.wild(1).slash(CardRenderItemSize.SMALL).wild(1).played.asterix
-            eb.description('Effect: When perform an action, each of your highest production can provide a wild tag; When producing, each of your highest tag number can provide a standard resource.');
-          });
-        });
-      }),
+        cardNumber: 'Q21',
+        // description: 'You start with 42 MC.',
+        renderData: CardRenderer.builder((b) => {
+            b.br;
+            b.megacredits(42);
+            b.text('(You start with 42 MC.)', CardRenderItemSize.TINY, false, false);
+            b.corpBox('effect', (ce) => {
+                ce.effectBox((eb) => {
+                    ce.vSpace(CardRenderItemSize.LARGE);
+                    eb.productionBox((pb) => pb.wild(1)).startEffect.wild(1).played.asterix();
+                    eb.description(undefined);
+                });
+                ce.vSpace();
+                ce.effectBox((eb) => {
+                    eb.diverseTag(1).startEffect.wild(1).asterix();
+                    eb.description('Effect: When perform an action, each of your highest production can provide a wild tag; When producing, each of your highest tag number can provide a standard resource.');
+                });
+            });
+        }),
     }
 }

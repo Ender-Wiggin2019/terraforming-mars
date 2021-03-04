@@ -146,6 +146,8 @@ export class Player implements ISerializable<SerializedPlayer> {
   // removedFromPlayCards is a bit of a misname: it's a temporary storage for
   // cards that provide 'next card' discounts. This will clear between turns.
   public removedFromPlayCards: Array<IProjectCard> = [];
+  // Chaos
+  public wildTagCount: number = 0;
 
   constructor(
     public name: string,
@@ -663,14 +665,15 @@ export class Player implements ISerializable<SerializedPlayer> {
         (cardTag) => cardTag === tag,
       ).length;
     }
-    if (this.isCorporation(CardName.CHAOS)){
 
-    }
     // Leavitt Station hook
     if (tag === Tags.SCIENCE && this.scienceTagCount > 0) {
       tagCount += this.scienceTagCount;
     }
-
+    // Leavitt Station hook
+    if (tag === Tags.WILDCARD && this.wildTagCount > 0) {
+      tagCount += this.wildTagCount;
+    }
     if (tag === Tags.WILDCARD) {
       return tagCount;
     }
@@ -1155,6 +1158,9 @@ export class Player implements ISerializable<SerializedPlayer> {
       }
     });
 
+    //星核hook
+    if (this.isCorporation(CardName._INTERPLANETARY_CINEMATICS_) && card.name === CardName.STARCORE_PLUNDER) cost-= 5*Math.min(this.getDistinctTagCount(true), Object.keys(Tags).length - 1);
+    else if (card.name === CardName.STARCORE_PLUNDER) cost-= 5*Math.min(this.getDistinctTagCount(true), Object.keys(Tags).length - 2);
     return Math.max(cost, 0);
   }
 
@@ -2015,6 +2021,21 @@ export class Player implements ISerializable<SerializedPlayer> {
       this.actionsTakenThisRound++;
       this.takeAction(game);
     });
+    for (const somePlayer of game.getPlayers()) {
+      if (somePlayer.corporationCard !== undefined && somePlayer.corporationCard.name === CardName.CHAOS) {
+        let resourceArray = [Resources.MEGACREDITS, Resources.STEEL, Resources.TITANIUM, Resources.PLANTS, Resources.ENERGY, Resources.HEAT]
+        let bonus = 0;
+        resourceArray.forEach((resource: Resources)=>{
+          let players = [...game.getPlayers()].sort(
+            (p1, p2) => p2.getProduction(resource) - p1.getProduction(resource),
+          );
+          if (players[0].id === somePlayer.id && players[0].getProduction(resource) > players[1].getProduction(resource) && players[0].getProduction(resource) >= 1){
+            bonus ++;
+          }
+        });
+        somePlayer.wildTagCount = bonus;
+      }
+    }
   }
 
   public process(game: Game, input: any): void {
@@ -2135,6 +2156,8 @@ export class Player implements ISerializable<SerializedPlayer> {
       removingPlayers: this.removingPlayers,
       // Playwrights
       removedFromPlayCards: this.removedFromPlayCards,
+      // Chaos
+      wildTagCount: this.wildTagCount,
       name: this.name,
       color: this.color,
       beginner: this.beginner,

@@ -46,7 +46,6 @@ import {Splice} from './Splice';
 import {StanfordTorus} from './StanfordTorus';
 import {SubCrustMeasurements} from './SubCrustMeasurements';
 import {TopsoilContract} from './TopsoilContract';
-import {IdoFront} from '../eros/IdoFront';
 
 export const PROMO_CARD_MANIFEST = new CardManifest({
   module: GameModule.Promo,
@@ -104,5 +103,4 @@ export const PROMO_CARD_MANIFEST = new CardManifest({
     {cardName: CardName.MONS_INSURANCE, Factory: MonsInsurance},
     {cardName: CardName.RECYCLON, Factory: Recyclon},
     {cardName: CardName.SPLICE, Factory: Splice},
-    {cardName: CardName.IDO_FRONT, Factory: IdoFront},
   ]});

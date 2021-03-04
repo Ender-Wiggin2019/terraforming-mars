@@ -13,6 +13,13 @@
     "Large Ecological Reserve":"大型生态保护区",
     "Clone Technology":"克隆科技",
     "Energy Supply":"电力补给",
-    "Urgent Terraforming Command":"紧急改造令"
+    "Urgent Terraforming Command":"紧急改造令",
+    "Cow":"奶牛",
+    "Starcore Plunter":"窃取星核",
+    "Jovian Expedition":"木星远征",
+
+
+    "Effect: When perform an action, each of your highest production can provide a wild tag; When producing, each of your highest tag number can provide a standard resource.":"效果：你的行动阶段，每个你全场唯一最高（至少为1）的产能为你提供一个问号标志；你的生产阶段，每个你全场唯一最多（至少为1）的标志为你生产一个标准资源。",
+    "Increase all production 3 steps. For each tag you already have, decrease 5 MC for the card cost. Cannot be copied by other cards.":"增加所有产能3点。你每拥有1种标志，费用减少5MC。不能被其他卡复制。"
 }
 

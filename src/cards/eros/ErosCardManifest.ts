@@ -23,6 +23,9 @@ import { CloneTechnology } from "./CloneTechnology";
 import { LargeEcologicalReserve } from "./LargeEcologicalReserve";
 import { EnergySupply } from "./EnergySupply";
 import { Chaos } from "./Chaos";
+import { Cow } from "./Cow";
+import { StarcorePlunder } from "./StarcorePlunder";
+import { JovianExpedition } from "./JovianExpedition";
 
 
 export const EROS_CARD_MANIFEST = new CardManifest({
@@ -47,6 +50,9 @@ export const EROS_CARD_MANIFEST = new CardManifest({
         { cardName: CardName.LARGE_ECOLOGICAL_RESERVE , Factory: LargeEcologicalReserve },
         { cardName: CardName.CLONE_TECHNOLOGY , Factory: CloneTechnology },
         { cardName: CardName.ENERGY_SUPPLY , Factory: EnergySupply },
+        { cardName: CardName.COW , Factory: Cow },
+        { cardName: CardName.STARCORE_PLUNDER , Factory: StarcorePlunder },
+        { cardName: CardName.JOVIAN_EXPEDITION , Factory: JovianExpedition },
         
     ],
     corporationCards: [
