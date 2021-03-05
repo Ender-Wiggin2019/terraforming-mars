@@ -50,6 +50,7 @@ export const GameSetupDetail = Vue.component('game-setup-detail', {
               <div v-if="gameOptions.aresExtension" class="create-game-expansion-icon expansion-icon-ares"></div>
               <div v-if="gameOptions.moonExpansion" class="create-game-expansion-icon expansion-icon-themoon"></div>
               <div v-if="gameOptions.communityCardsOption" class="create-game-expansion-icon expansion-icon-community"></div>
+              <div v-if="gameOptions.erosCardsOption" class="create-game-expansion-icon expansion-icon-eros"></div>
               <div v-if="isPoliticalAgendasOn()" class="create-game-expansion-icon expansion-icon-agendas"></div>
             </li>
 

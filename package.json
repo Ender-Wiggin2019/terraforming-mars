@@ -42,7 +42,7 @@
     "extends": "@istanbuljs/nyc-config-typescript"
   },
   "scripts": {
-    "build": " npm run makeJson && npm run makeCss && npm run compile && npm run templates && npm run webpack && npm run lint",
+    "build": " npm run makeJson && npm run makeCss && npm run compile && npm run templates && npm run webpack",
     "buildts": "tsc --build src/tsconfig.json && webpack --config webpack.config.js",
     "clean": "rm -r ./build/ ./src/genfiles/ || true",
     "compile": "tsc --build src/tsconfig.json",

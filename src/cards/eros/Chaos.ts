@@ -26,19 +26,21 @@ export class Chaos implements CorporationCard{
       let bonus: number = 0;
       const playerTags : ITagCount[] = player.getAllTags();
 
-      playerTags.forEach((tag) => {
-        const tagData = playerTags.find((data) => data.tag === tag.tag && data.tag !== Tags.WILDCARD);
-        let players = [...game.getPlayers()].sort(
-            (p1, p2) => p2.getTagCount(tag.tag, false, false) - p1.getTagCount(tag.tag, false, false)
-        );
-        if (tagData === undefined) bonus += 0;
-        else if (players[0].corporationCard!= undefined && players[0].corporationCard === this && players[0].getTagCount(tag.tag, false, false) > players[1].getTagCount(tag.tag, false, false) && tagData.count >= 1) {
-            bonus += 1;
-            console.log(tag.tag)
-        }
-        return undefined;
-        
-      });
+      if (game.isSoloMode()) bonus = player.getDistinctTagCount(false);
+      else {
+        playerTags.forEach((tag) => {
+          const tagData = playerTags.find((data) => data.tag === tag.tag && data.tag !== Tags.WILDCARD);
+          let players = [...game.getPlayers()].sort(
+              (p1, p2) => p2.getTagCount(tag.tag, false, false) - p1.getTagCount(tag.tag, false, false)
+          );
+          //>, later can change to >= if possible
+          if (tagData !== undefined && players[0].corporationCard!= undefined && players[0].corporationCard === this && players[0].getTagCount(tag.tag, false, false) > players[1].getTagCount(tag.tag, false, false) && tagData.count >= 1) {
+              bonus += 1;
+          }
+          return undefined;
+          
+        });
+      }
       if (bonus > 0) {
         this.selectResources(player, game, bonus);
       }
@@ -114,7 +116,7 @@ export class Chaos implements CorporationCard{
                     eb.production((pb) => pb.wild(1)).startEffect.wild(1).played.asterix();
                 });
                 ce.vSpace();
-                ce.effect('Effect: When perform an action, each of your highest production can provide a wild tag; When producing, each of your highest tag number can provide a standard resource.',(eb) => {
+                ce.effect('When perform an action, each of your highest production can provide a wild tag; When producing, each of your highest tag number can provide a standard resource.',(eb) => {
                     eb.diverseTag(1).startEffect.wild(1).asterix();
                 });
             });

@@ -1256,11 +1256,6 @@ export class Game implements ISerializable<SerializedGame> {
     if (helion !== undefined) {
       player.heat += steps * 2;
     }
-    //群友扩hook,热泉微生物hook
-    if (player.playedCards.find(card => card.name === CardName.HYDROTHERMAL_VENT_ARCHAEA)){
-      const foundCards = player.playedCards.filter((card) => card.name === CardName.HYDROTHERMAL_VENT_ARCHAEA);    
-      player.addResourceTo(foundCards[0], 1);
-    }
     if (this.phase !== Phase.SOLAR) {
       // BONUS FOR HEAT PRODUCTION AT -20 and -24
       if (this.temperature < -24 && this.temperature + steps * 2 >= -24) {
@@ -1269,7 +1264,11 @@ export class Game implements ISerializable<SerializedGame> {
       if (this.temperature < -20 && this.temperature + steps * 2 >= -20) {
         player.addProduction(Resources.HEAT);
       }
-
+    //群友扩hook,热泉微生物hook
+      if (player.playedCards.find(card => card.name === CardName.HYDROTHERMAL_VENT_ARCHAEA)){
+        const foundCards = player.playedCards.filter((card) => card.name === CardName.HYDROTHERMAL_VENT_ARCHAEA);    
+        player.addResourceTo(foundCards[0], 1);
+      }
       TurmoilHandler.onGlobalParameterIncrease(player, GlobalParameter.TEMPERATURE, steps);
       player.increaseTerraformRatingSteps(steps);
     }

@@ -607,6 +607,12 @@ export const CreateGameForm = Vue.component('create-game-form', {
                                 <span v-i18n>BreakThrough</span>&nbsp;<a href="https://docs.qq.com/pdf/DS29QWFZLeUhWWlRR" class="tooltip" target="_blank">&#9432;</a>
                             </label>
 
+                            <input type="checkbox" name="eros" id="erosCards-checkbox" v-model="erosCardsOption"  v-if="isvip">
+                            <label for="erosCards-checkbox" class="expansion-button" :class="{forbidden:!isvip}">
+                                <div class="create-game-expansion-icon expansion-icon-eros"></div>
+                                <span v-i18n>Eros</span>&nbsp;<a href="https://docs.qq.com/doc/DS25WcXdnbHhib3Fy" class="tooltip" target="_blank">&#9432;</a>
+                            </label>
+                            
                             <input type="checkbox" name="ares" id="ares-checkbox" v-model="aresExtension"  v-if="isvip">
                             <label for="ares-checkbox" class="expansion-button" :class="{forbidden:!isvip}">
                                 <div class="create-game-expansion-icon expansion-icon-ares"></div>
@@ -619,11 +625,6 @@ export const CreateGameForm = Vue.component('create-game-form', {
                                 <span v-i18n>Community</span>&nbsp;<a href="https://docs.qq.com/pdf/DQUFZaHdMWHl2V21M" class="tooltip" target="_blank">&#9432;</a>
                             </label>
 
-                            <input type="checkbox" name="eros" id="erosCards-checkbox" v-model="erosCardsOption"  v-if="isvip">
-                            <label for="erosCards-checkbox" class="expansion-button" :class="{forbidden:!isvip}">
-                                <div class="create-game-expansion-icon expansion-icon-eros"></div>
-                                <span v-i18n>Eros</span>&nbsp;<a href="https://github.com/bafolts/terraforming-mars/wiki/Variants#community" class="tooltip" target="_blank">&#9432;</a>
-                            </label>
                             <input type="checkbox" name="themoon" id="themoon-checkbox" v-model="moonExpansion">
                             <label for="themoon-checkbox" class="expansion-button">
                                 <div class="create-game-expansion-icon expansion-icon-themoon"></div>

@@ -34,7 +34,7 @@ export class CloneTechnology extends Card implements IProjectCard {
   public getVictoryPoints() {
     return 1;
   }
-  // Made public for availability in tests
+
   public plantCardsNames: ReadonlyArray<CardName> = [
       CardName.ARCTIC_ALGAE,
       CardName.EOS_CHASMA_NATIONAL_PARK,
@@ -61,7 +61,6 @@ export class CloneTechnology extends Card implements IProjectCard {
       CardName.OCEAN_FARM
   ];
 
-  // Made public for availability in tests
   public corporationCardsNames: ReadonlyArray<CardName> = [
     CardName.ECOLINE,
     CardName._ECOLINE_,
@@ -178,7 +177,7 @@ export class CloneTechnology extends Card implements IProjectCard {
       player.addProduction(Resources.MEGACREDITS, result.megaCreditProduction);
       player.addProduction(Resources.PLANTS, result.plantProduction);
       player.addProduction(Resources.HEAT, result.heatProduction);
-      player.plants += result.plantResource;
+      player.setResource(Resources.PLANTS, result.plantResource);
 
       player.game.log('${0} copied ${1} production and plant resource with ${2}', (b) =>
         b.player(player).cardName(result.name).card(this));

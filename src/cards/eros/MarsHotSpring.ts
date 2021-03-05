@@ -19,8 +19,8 @@ export class MarsHotSpring extends Card implements IProjectCard {
       super({
         name: CardName.MARS_HOT_SPRING,
         cardType: CardType.AUTOMATED,
-        tags: [Tags.VENUS, Tags.JOVIAN, Tags.EARTH],
-        cost: 5,
+        tags: [Tags.BUILDING],
+        cost: 12,
   
         requirements: CardRequirements.builder((b) => b.oceans(3)),
         metadata: {

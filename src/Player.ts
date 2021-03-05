@@ -1988,18 +1988,28 @@ export class Player implements ISerializable<SerializedPlayer> {
     if (this.actionsTakenThisRound > 0 && this.game.gameOptions.undoOption && !this.game.cardDrew) {
       action.options.push(this.undoTurnOption());
     }
+    //Chaos hook
     for (const somePlayer of this.game.getPlayers()) {
       if (somePlayer.corporationCard !== undefined && somePlayer.corporationCard.name === CardName.CHAOS) {
         let resourceArray = [Resources.MEGACREDITS, Resources.STEEL, Resources.TITANIUM, Resources.PLANTS, Resources.ENERGY, Resources.HEAT]
         let bonus = 0;
-        resourceArray.forEach((resource: Resources)=>{
-          let players = [...this.game.getPlayers()].sort(
-            (p1, p2) => p2.getProduction(resource) - p1.getProduction(resource),
-          );
-          if (players[0].id === somePlayer.id && players[0].getProduction(resource) > players[1].getProduction(resource) && players[0].getProduction(resource) >= 1){
-            bonus ++;
-          }
-        });
+        if (this.game.isSoloMode()){
+          resourceArray.forEach((resource: Resources)=>{
+            if (somePlayer.getProduction(resource) >= 1){
+              bonus ++;
+            }
+          });
+        }
+        else {
+          resourceArray.forEach((resource: Resources)=>{
+            let players = [...this.game.getPlayers()].sort(
+              (p1, p2) => p2.getProduction(resource) - p1.getProduction(resource),
+            );
+            if (players[0].id === somePlayer.id && players[0].getProduction(resource) > players[1].getProduction(resource) && players[0].getProduction(resource) >= 1){
+              bonus ++;
+            }
+          });
+        }
         somePlayer.wildTagCount = bonus;
       }
     }
