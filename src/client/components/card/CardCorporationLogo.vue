@@ -224,6 +224,9 @@
     <template v-else-if="title ===  CardName.RUNCITER_ASSOCIATES">
       <div class="card-runciter-associates-logo"></div>
     </template>
+    <template v-else-if="title ===  CardName.ARK_NOVA">
+      <div class="card-ark-nova-logo"></div>
+    </template>
     <template v-else>
       <div :class="logoClass">{{capsTitle}}</div>
     </template>
