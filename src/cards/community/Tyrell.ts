@@ -20,7 +20,7 @@ export class Tyrell extends Card implements ICard, ICorporationCard {
       cardType: CardType.CORPORATION,
 
       metadata: {
-        cardNumber: 'XUEBAO04',
+        cardNumber: 'XUEBAO03',
         description: 'You start with 50 M€.',
         renderData: CardRenderer.builder((b) => {
           b.br.br.br;

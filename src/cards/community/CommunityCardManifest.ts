@@ -51,16 +51,16 @@ export const COMMUNITY_CARD_MANIFEST = new CardManifest({
     {cardName: CardName.ARISTARCHUS, Factory: Aristarchus},
     {cardName: CardName.LABOUR_UNION, Factory: LabourUnion},
     {cardName: CardName.UNITED_NATIONS_MISSION_ONE, Factory: UnitedNationsMissionOne},
-    {cardName: CardName.WEYLAND_YUTANI, Factory: WeylandYutani},
-    {cardName: CardName.SHINRA_TECH, Factory: ShinraTech},
-    {cardName: CardName.TYRELL, Factory: Tyrell},
-    {cardName: CardName.MINING_CORP, Factory: MiningCorp},
-    {cardName: CardName.SCOLEX_INDUSTRIES, Factory: ScolexIndustries},
-    {cardName: CardName.PROTOGEN, Factory: Protogen},
-    {cardName: CardName.INTEGRATED_MICROORGANISMS, Factory: IntegratedMicroorganisms},
-    {cardName: CardName.BUY_N_LARGE, Factory: BuyNLarge},
-    {cardName: CardName.RDA, Factory: Rda},
-    {cardName: CardName.ARK_NOVA, Factory: ArkNova},
+    {cardName: CardName.WEYLAND_YUTANI, Factory: WeylandYutani}, // XUEBAO1
+    {cardName: CardName.SHINRA_TECH, Factory: ShinraTech}, // XUEBAO2
+    {cardName: CardName.TYRELL, Factory: Tyrell}, // XUEBAO3
+    {cardName: CardName.MINING_CORP, Factory: MiningCorp}, // XUEBAO4
+    {cardName: CardName.SCOLEX_INDUSTRIES, Factory: ScolexIndustries}, // XUEBAO5
+    {cardName: CardName.PROTOGEN, Factory: Protogen}, // XUEBAO6
+    {cardName: CardName.INTEGRATED_MICROORGANISMS, Factory: IntegratedMicroorganisms}, // XUEBAO7
+    {cardName: CardName.BUY_N_LARGE, Factory: BuyNLarge}, // XUEBAO8
+    {cardName: CardName.RDA, Factory: Rda}, // XUEBAO9
+    {cardName: CardName.ARK_NOVA, Factory: ArkNova}, // XUEBAO10
     // {cardName: CardName.CITY_GREENHOUSE, Factory: CityGreenhouse}, // 雪宝这公司没人玩，注释了
 
 

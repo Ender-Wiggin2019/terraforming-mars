@@ -46,7 +46,7 @@ import {HayMaker} from '../../cards/eros/HayMaker';
 import {MartianFencing} from '../../cards/eros/MartianFencing';
 import {MillenniumFalcon} from '../../cards/eros/corp/MillenniumFalcon';
 import {ImperialStarDestroyer} from '../../cards/eros/corp/ImperialStarDestroyer';
-import {SithOrganizations} from '../../cards/eros/corp/SithOrganizations';
+// import {SithOrganizations} from '../../cards/eros/corp/SithOrganizations';
 import {RunciterAssociates} from '../../cards/eros/corp/RunciterAssociates';
 import {JovianDefenseDepartment} from '../../cards/eros/JovianDefenseDepartment';
 import {Trantor} from '../../cards/eros/Trantor';
@@ -105,7 +105,7 @@ export const EROS_CARD_MANIFEST = new CardManifest({
     {cardName: CardName.PRISM, Factory: Prism}, // Q29
     {cardName: CardName.MILLENNIUM_FALCON, Factory: MillenniumFalcon, compatibility: ['colonies']}, // Q30
     {cardName: CardName.IMPERIAL_STAR_DESTROYER, Factory: ImperialStarDestroyer, compatibility: ['colonies']}, // Q31
-    {cardName: CardName.SITH_ORGANIZATIONS, Factory: SithOrganizations, compatibility: ['turmoil']}, // Q32
+    // {cardName: CardName.SITH_ORGANIZATIONS, Factory: SithOrganizations, compatibility: ['turmoil']}, // Q32 没什么人玩，评价也不咋样
     {cardName: CardName.RUNCITER_ASSOCIATES, Factory: RunciterAssociates}, // Q33
 
 

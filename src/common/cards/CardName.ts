@@ -525,7 +525,7 @@ export enum CardName {
   BUY_N_LARGE = '🌸Buy N Large🌸',
   RDA = '🌸RDA🌸',
   CITY_GREENHOUSE = '🌸City Greenhouse🌸',
-  ARK_NOVA = 'Ark Nova',
+  ARK_NOVA = '🌸Ark Nova🌸',
 
   // Community preludes
   VALUABLE_GASES = 'Valuable Gases',

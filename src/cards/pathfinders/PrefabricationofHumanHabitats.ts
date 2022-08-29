@@ -6,7 +6,7 @@ import {CardRenderer} from '../render/CardRenderer';
 import {Resources} from '../../common/Resources';
 import {CardRequirements} from '../CardRequirements';
 import {Tags} from '../../common/cards/Tags';
-import {Size} from '../../common/cards/render/Size';
+// import {Size} from '../../common/cards/render/Size';
 import {played} from '../Options';
 
 export class PrefabricationofHumanHabitats extends Card implements IProjectCard {
@@ -24,7 +24,7 @@ export class PrefabricationofHumanHabitats extends Card implements IProjectCard 
         cardNumber: 'Pf02',
         renderData: CardRenderer.builder((b) => {
           b.effect('Cards with a city tag cost 2M€ less.', (eb) => {
-            eb.city({size: Size.MEDIUM, played}).startEffect.megacredits(-2);
+            eb.cityTag(1, {played}).startEffect.megacredits(-2);
           });
           b.br;
           b.effect('The City standard project costs 2M€ less. STEEL MAY BE USED as if you were playing a Building card.', (eb) => {

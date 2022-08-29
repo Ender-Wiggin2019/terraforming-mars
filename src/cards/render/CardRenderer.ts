@@ -197,6 +197,10 @@ abstract class Builder<T> {
     return this._appendToRow(new CardRenderItem(CardRenderItemType.BUILDING, amount, options));
   }
 
+  public cityTag(amount: number = -1, options?: ItemOptions): Builder<T> { // 新增city tag
+    return this._appendToRow(new CardRenderItem(CardRenderItemType.CITY, amount, options));
+  }
+
   public jovian(options?: ItemOptions): Builder<T> {
     return this._appendToRow(new CardRenderItem(CardRenderItemType.JOVIAN, -1, options));
   }

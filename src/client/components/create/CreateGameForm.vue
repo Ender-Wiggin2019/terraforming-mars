@@ -7,11 +7,7 @@
             <div class="create-game-discord-invite" v-else-if="playersCount===1" >
                 <span v-i18n>Looking for people to play with? Join us qq group: 859050306</span> .
             </div>
-            <div class="create-game-discord-invite" >
-                <span v-i18n> 修复：直接移除了粉丝扩与pf扩重名的前序卡 </span><br>
-                <span v-i18n> 修复：非星球钛标公司目前可以享受第二张公司的钛标效果 </span><br>
-                <span v-i18n> 修复：反重力先行试验再也没有bug了 </span><br>
-            </div>
+
             <div class="create-game-form create-game-panel create-game--block">
 
                 <div class="create-game-options">
@@ -74,12 +70,14 @@
                             </label>
 
                             <input type="checkbox" name="breakthrough" id="breakthrough-checkbox" v-model="breakthrough"  v-if="isvip">
-                            <label for="breakthrough-checkbox"  :class="{forbidden:!isvip}">
+                            <label for="breakthrough-checkbox" class="expansion-button" :class="{forbidden:!isvip}">
+                                <div class="create-game-expansion-icon expansion-icon-breakthrough"></div>
                                 <span v-i18n>BreakThrough</span>&nbsp;<a href="https://docs.qq.com/pdf/DS29QWFZLeUhWWlRR" class="tooltip" target="_blank">&#9432;</a>
                             </label>
 
                             <input type="checkbox" name="doubleCorp" id="doubleCorp-checkbox" v-model="doubleCorp"  v-if="isvip">
-                            <label for="doubleCorp-checkbox"  :class="{forbidden:!isvip}">
+                            <label for="doubleCorp-checkbox" class="expansion-button" :class="{forbidden:!isvip}">
+                                <div class="create-game-expansion-icon expansion-icon-double-corp"></div>
                                 <span v-i18n>Double Corp</span>&nbsp;
                             </label>
 
