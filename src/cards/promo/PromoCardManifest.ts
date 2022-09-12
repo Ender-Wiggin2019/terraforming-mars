@@ -50,6 +50,7 @@ import {Splice} from './Splice';
 import {StanfordTorus} from './StanfordTorus';
 import {SubCrustMeasurements} from './SubCrustMeasurements';
 import {TopsoilContract} from './TopsoilContract';
+import {CorporateArchives} from './CorporateArchives';
 
 export const PROMO_CARD_MANIFEST = new CardManifest({
   module: 'promo',
@@ -98,6 +99,7 @@ export const PROMO_CARD_MANIFEST = new CardManifest({
   ],
   preludeCards: [
     {cardName: CardName.NEW_PARTNER, Factory: NewPartner},
+    {cardName: CardName.CORPORATE_ARCHIVES, Factory: CorporateArchives},
   ],
 
   cardsToRemove: [

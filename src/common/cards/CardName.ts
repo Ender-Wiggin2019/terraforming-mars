@@ -471,6 +471,7 @@ export enum CardName {
   HARVEST = 'Harvest',
   OUTDOOR_SPORTS = 'Outdoor Sports',
   NEW_PARTNER = 'New Partner',
+  CORPORATE_ARCHIVES = 'Corporate Archives,',
 
 
   // /// breakthrough
