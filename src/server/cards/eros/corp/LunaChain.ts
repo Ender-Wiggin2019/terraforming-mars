@@ -2,7 +2,7 @@
  * @Author: Ender-Wiggin
  * @Date: 2024-10-26 11:51:43
  * @LastEditors: Ender-Wiggin
- * @LastEditTime: 2024-10-26 13:10:04
+ * @LastEditTime: 2025-07-27 01:35:30
  * @Description:
  */
 import {CardRenderer} from '../../render/CardRenderer';
@@ -15,7 +15,7 @@ export class LunaChain extends CorporationCard {
   constructor() {
     super({
       name: CardName.LUNA_CHAIN,
-      startingMegaCredits: 48,
+      startingMegaCredits: 50,
       tags: [Tag.EARTH],
 
       metadata: {
