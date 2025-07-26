@@ -2,7 +2,7 @@
  * @Author: Ender-Wiggin
  * @Date: 2024-10-26 11:51:43
  * @LastEditors: Ender-Wiggin
- * @LastEditTime: 2025-07-27 01:35:30
+ * @LastEditTime: 2025-07-27 01:37:51
  * @Description:
  */
 import {CardRenderer} from '../../render/CardRenderer';
@@ -21,7 +21,7 @@ export class LunaChain extends CorporationCard {
       metadata: {
         cardNumber: 'Q34',
 
-        description: 'You start with 48 M€.',
+        description: 'You start with 50 M€.',
         renderData: CardRenderer.builder((b) => {
           b.br.br.br;
           b.megacredits(48);
